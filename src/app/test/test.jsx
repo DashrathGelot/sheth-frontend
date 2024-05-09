@@ -1,12 +1,10 @@
 import React from "react";
 import Button from "../components/Button";
 
-const test = () => {
+export default Test = () => {
   return (
     <>
       <Button type="primary" />
     </>
   );
 };
-
-export default test;

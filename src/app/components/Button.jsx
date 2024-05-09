@@ -1,6 +1,6 @@
 import React from "react";
+import styles from "../services/styles";
 
-import styles from "../services/Styles";
 const Button = ({ type }) => {
   const { bgColor, textColor } = styles[type];
   return (
