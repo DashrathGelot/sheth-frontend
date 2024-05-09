@@ -1,28 +1,12 @@
 import React from "react";
 
+import styles from "../services/Styles";
 const Button = ({ type }) => {
-  const getButtonStyle = (type) => {
-    switch (type) {
-      case "primary":
-        return "bg-primary";
-      case "secondary":
-        return "bg-secondary";
-      case "third":
-        return "bg-third";
-      case "add_cart":
-        return "bg-fourth text-primary";
-      case "checkout":
-        return "bg-fifth text-primary";
-      case "back-top":
-        return "bg-fifth border border-primary text-primary";
-      default:
-        return "bg-primary border border-red-600";
-    }
-  };
-  const btn_classes = getButtonStyle(type);
-
+  const { bgColor, textColor } = styles[type];
   return (
-    <button className={`p-3 rounded-sm m-2 text-fifth  ${btn_classes}`}>
+    <button
+      className={`p-3 rounded-sm m-2 text-fifth  ${bgColor} ${textColor}`}
+    >
       button
     </button>
   );
