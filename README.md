@@ -1,3 +1,2 @@
 # sheth-frontend
-
-E-Commerce Frontend website.
+E-Commerce Frontend website
