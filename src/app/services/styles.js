@@ -11,15 +11,11 @@ const styles = {
     bgColor: "bg-third",
     textColor: "text-fifth",
   },
-  addCart: {
+  fourth: {
     bgColor: "bg-fourth",
     textColor: "text-primary",
   },
-  checkout: {
-    bgColor: "bg-fifth",
-    textColor: "text-primary",
-  },
-  backTop: {
+  fifth: {
     bgColor: "bg-fifth",
     textColor: "text-primary",
   },

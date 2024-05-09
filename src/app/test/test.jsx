@@ -4,7 +4,7 @@ import Button from "../components/Button";
 const test = () => {
   return (
     <>
-      <Button type="addCart" />
+      <Button type="primary" />
     </>
   );
 };
