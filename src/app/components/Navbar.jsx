@@ -1,6 +1,7 @@
 // NavigationBar.js
 
 import React from "react";
+// import Humburger from "../assets/svg/Humburger";
 
 const Navbar = () => {
   return (
@@ -9,15 +10,29 @@ const Navbar = () => {
       <div className="flex items-center">
         <button className="text-primary focus:outline-none ">
           <svg
-            className="h-6 w-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
+            className="w-6 h-6"
             viewBox="0 0 24 24"
-            stroke="currentColor"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+            <path
+              d="M4 18L20 18"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 12L20 12"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 6L20 6"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
           </svg>
         </button>
       </div>
@@ -36,7 +51,6 @@ const Navbar = () => {
         {/* Search Icon */}
         <div className="hidden md:flex">
           <button className="text-white focus:outline-none mr-2 flex">
-            <span className="text-primary mr-1">Search</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
