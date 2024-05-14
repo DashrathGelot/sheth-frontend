@@ -14,6 +14,9 @@ module.exports = {
         fourth: "#778DA9",
         fifth: "#E0E1DD",
       },
+      fontFamily: {
+        hind: ["Hind", "sans-serif"],
+      },
     },
   },
   plugins: [],
