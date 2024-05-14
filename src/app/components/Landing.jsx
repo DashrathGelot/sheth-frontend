@@ -25,7 +25,7 @@ const Landing = () => {
     <div className="flex-wrap">
       <Banner />
       <Section tiles={tiles} title={"This is a section title"}>
-        <Grid gap={1} cols={2}>
+        <Grid gap={1} cols={4}>
           {tiles.map((tile, index) => (
             <Tile key={index} image={tile.image} text={tile.text} />
           ))}

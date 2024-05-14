@@ -1,11 +1,12 @@
 import React from "react";
 
-const Tile = ({ image, title }) => {
+const Tile = ({ image, title, text }) => {
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+    <div className="w-full   p-4">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <img className="w-full h-auto" src={image} alt={title} />
       </div>
+      {text && <p className="text-center p-2">{text}</p>}
     </div>
   );
 };
