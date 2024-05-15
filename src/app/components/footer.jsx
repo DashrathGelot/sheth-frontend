@@ -7,7 +7,10 @@ const Footer = () => {
     {
       title: "Column 1",
       links: [
-        { text: "Our Client Advisors are available to assist you by phone at +1.866.VUITTON . You can also chat or email us. ", url: "#" },
+        {
+          text: "Our Client Advisors are available to assist you by phone at +1.866.VUITTON . You can also chat or email us. ",
+          url: "#",
+        },
         { text: "FAQs", url: "#" },
         { text: "Product Care", url: "#" },
         { text: "Stores", url: "#" },
@@ -35,7 +38,10 @@ const Footer = () => {
     {
       title: "Column 4",
       links: [
-        { text: "Sign up for Louis Vuitton emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.", url: "#" },
+        {
+          text: "Sign up for Louis Vuitton emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.",
+          url: "#",
+        },
         { text: "Follow Us", url: "#" },
       ],
     },
@@ -43,7 +49,7 @@ const Footer = () => {
   return (
     <footer className="bg-fifth text-primary py-8">
       <div className="container mx-auto">
-        <Grid gap={1} cols={2}>
+        <Grid gap={1} cols={4}>
           {footerLinksData.map((group, index) => (
             <FooterLinkGroup
               key={index}

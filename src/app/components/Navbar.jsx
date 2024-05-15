@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-fifth p-4 flex justify-between items-center shadow-sm">
+    <nav className="bg-fifth p-4 flex justify-between items-center shadow-sm fixed w-full top-0 z-50">
       {/* Hamburger Icon */}
       <div className="flex items-center">
         <button className="text-primary focus:outline-none ">
@@ -20,7 +20,7 @@ const Navbar = () => {
         <span className="text-primary font-bold text-xl font-hind">SHETH</span>
       </div>
 
-      <div className="  md:flex items-center">
+      <div className="md:flex items-center">
         {/* Search Icon */}
         <div className="hidden md:flex">
           <button className="text-primary focus:outline-none mr-2">
