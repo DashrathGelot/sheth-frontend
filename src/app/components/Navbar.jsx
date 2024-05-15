@@ -1,39 +1,35 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ logo, text }) => {
   return (
-    <nav className="bg-fifth p-4 flex justify-between items-center shadow-sm fixed w-full top-0 z-50">
+    <nav className="bg-white p-4 flex justify-between items-center shadow-sm fixed w-full top-0 z-50">
       {/* Hamburger Icon */}
       <div className="flex items-center">
         <button className="text-primary focus:outline-none ">
-          <img src="/burger-menu.svg" alt="" srcset="" className="w-6 h-6" />
+          <img src="/burger-menu.svg" alt="menu" className="w-6 h-6" />
         </button>
       </div>
 
       {/* Logo and Name (Centered) */}
       <div className="flex items-center justify-center">
-        <img
-          src="https://shorturl.at/yIY46"
-          alt="Logo"
-          className="h-8 w-8 mr-2"
-        />
-        <span className="text-primary font-bold text-xl font-hind">SHETH</span>
+        <img src={logo} alt="Logo" className="h-8 w-8 mr-2" />
+        <span className="text-primary font-bold text-xl font-hind">{text}</span>
       </div>
 
       <div className="md:flex items-center">
         {/* Search Icon */}
         <div className="hidden md:flex">
           <button className="text-primary focus:outline-none mr-2">
-            <img src="/search.svg" className="w-6 h-6" />
+            <img src="/search.svg" className="w-6 h-6" alt="search" />
           </button>
         </div>
         {/* User Icon */}
         <button className="text-primary focus:outline-none mr-2">
-          <img src="/user.svg" className="w-6 h-6" />
+          <img src="/user.svg" className="w-6 h-6" alt="user" />
         </button>
         {/* Cart Icon */}
         <button className="text-primary focus:outline-none mr-2">
-          <img src="/cart.svg" className="w-6 h-6" />
+          <img src="/cart.svg" className="w-6 h-6" alt="cart" />
         </button>
       </div>
     </nav>
