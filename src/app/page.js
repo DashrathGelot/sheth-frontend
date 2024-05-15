@@ -11,8 +11,8 @@ export default function Home() {
     banner: {
       videoUrl: "https://shorturl.at/HQR14",
       imageUrl: "https://shorturl.at/evS12", // If we want to use an image
-      heading: "SHETHH",
-      paragraph: "Transforming Transactions with Top-Notch Service",
+      bannerHeading: "SHETHH",
+      tagLine: "Transforming Transactions with Top-Notch Service",
     },
     landing: {
       sections: [
@@ -91,7 +91,7 @@ export default function Home() {
 
   return (
     <main className="overflow-x-hidden">
-      <Navbar logo={config.navbar.logo} text={config.navbar.text} />
+      <Navbar config={config.navbar} />
       <Landing banner={config.banner} sections={config.landing.sections} />
       <Footer footerLinksData={config.footer.footerLinksData} />
     </main>

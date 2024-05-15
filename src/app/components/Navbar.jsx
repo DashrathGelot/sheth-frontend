@@ -1,13 +1,13 @@
 import React from "react";
+import IconButton from "./common/IconButton";
 
-const Navbar = ({ logo, text }) => {
+const Navbar = ({ config}) => {
+  const {logo, text} = config;
   return (
     <nav className="bg-white p-4 flex justify-between items-center shadow-sm fixed w-full top-0 z-50">
       {/* Hamburger Icon */}
       <div className="flex items-center">
-        <button className="text-primary focus:outline-none ">
-          <img src="/burger-menu.svg" alt="menu" className="w-6 h-6" />
-        </button>
+        <IconButton iconSrc="/burger-menu.svg" altText="menu" />
       </div>
 
       {/* Logo and Name (Centered) */}
@@ -19,18 +19,12 @@ const Navbar = ({ logo, text }) => {
       <div className="md:flex items-center">
         {/* Search Icon */}
         <div className="hidden md:flex">
-          <button className="text-primary focus:outline-none mr-2">
-            <img src="/search.svg" className="w-6 h-6" alt="search" />
-          </button>
+          <IconButton iconSrc="/search.svg" altText="search" />
         </div>
         {/* User Icon */}
-        <button className="text-primary focus:outline-none mr-2">
-          <img src="/user.svg" className="w-6 h-6" alt="user" />
-        </button>
+        <IconButton iconSrc="/user.svg" altText="user" />
         {/* Cart Icon */}
-        <button className="text-primary focus:outline-none mr-2">
-          <img src="/cart.svg" className="w-6 h-6" alt="cart" />
-        </button>
+        <IconButton iconSrc="/cart.svg" altText="cart" />
       </div>
     </nav>
   );

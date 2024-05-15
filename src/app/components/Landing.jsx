@@ -6,12 +6,7 @@ import Grid from "./common/Grid";
 const Landing = ({ banner, sections }) => {
   return (
     <div className="flex-wrap">
-      <Banner
-        videoUrl={banner.videoUrl}
-        imageUrl={banner.imageUrl}
-        heading={banner.heading}
-        paragraph={banner.paragraph}
-      />
+      <Banner banner={banner} />
       {sections.map((section, index) => (
         <Section key={index} title={section.title} tagLine={section.tagLine}>
           <Grid gap={1} cols={section.cols}>
