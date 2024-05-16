@@ -9,8 +9,7 @@ export default function Home() {
       text: "SHETHH",
     },
     banner: {
-      videoUrl: "https://shorturl.at/HQR14",
-      imageUrl: "https://shorturl.at/evS12", // If we want to use an image
+      media: "https://cdn.pixabay.com/video/2021/08/04/83861-584870632_large.mp4", 
       bannerHeading: "SHETHH",
       tagLine: "Transforming Transactions with Top-Notch Service",
     },
