@@ -1,13 +1,13 @@
 import React from "react";
 
-const isVideo = (url) => {
-  const videoExtensions = ["mp4", "webm", "ogg"];
-  const extension = url.split('.').pop().toLowerCase();
-  return videoExtensions.includes(extension);
-};
-
 const Banner = ({ banner }) => {
   const { media, bannerHeading, tagLine } = banner;
+
+  const isVideo = (url) => {
+    const videoExtensions = ["mp4", "webm", "ogg"];
+    const extension = url.split('.').pop().toLowerCase();
+    return videoExtensions.includes(extension);
+  };
 
   return (
     <div className="relative w-screen h-screen">
