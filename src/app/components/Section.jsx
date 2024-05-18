@@ -1,5 +1,3 @@
-import React from "react";
-
 const Section = ({ title, tagLine, children }) => {
   return (
     <section className="bg-white py-12">

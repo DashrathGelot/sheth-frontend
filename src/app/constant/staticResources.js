@@ -4,6 +4,9 @@ const home = {
     SERVICE: "service"
 }
 
+const VIDEO_EXTENSTIONS = ["mp4", "webm", "ogg"];
+
 export {
-    home
+    home,
+    VIDEO_EXTENSTIONS
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Tile = ({ image, title, text }) => {
   return (
     <div className="w-full p-4">
