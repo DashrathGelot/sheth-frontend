@@ -1,7 +1,8 @@
 import React from "react";
 
 const Banner = ({ banner }) => {
-  const { media, bannerHeading, tagLine } = banner;
+  const { attires, title, tagLine } = banner;
+  const media = attires[0].media;
 
   const isVideo = (url) => {
     const videoExtensions = ["mp4", "webm", "ogg"];
@@ -31,7 +32,7 @@ const Banner = ({ banner }) => {
       )}
       <div className="absolute inset-0 flex flex-col justify-center items-center">
         <div className="text-center" style={{ marginTop: "25%" }}>
-          <h1 className="text-4xl font-bold font-hind text-white">{bannerHeading}</h1>
+          <h1 className="text-4xl font-bold font-hind text-white">{title}</h1>
           <p className="text-white">{tagLine}</p>
         </div>
       </div>
