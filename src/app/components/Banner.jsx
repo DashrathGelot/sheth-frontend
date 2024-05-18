@@ -1,15 +1,8 @@
-import React from "react";
+import { isVideo } from "../lib/utils";
 
 const Banner = ({ banner }) => {
   const { attires, title, tagLine } = banner;
   const media = attires[0].media;
-
-  const isVideo = (url) => {
-    const videoExtensions = ["mp4", "webm", "ogg"];
-    const extension = url.split('.').pop().toLowerCase();
-    return videoExtensions.includes(extension);
-  };
-
   return (
     <div className="relative w-screen h-screen">
       {isVideo(media) ? (
