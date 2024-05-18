@@ -1,98 +1,35 @@
-import Landing from "./components/Landing";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Banner from "./components/Banner";
+import Section from "./components/Section";
+import Tile from "./components/Tile";
+import Grid from "./components/common/Grid";
+import rest from "./services/rest";
 
-export default function Home() {
+import { HttpMethod, paths } from "./constant/urlResource";
+import { home } from "./constant/staticResources";
+
+export default async function Home() {
+
+  const data = await rest(HttpMethod.GET, paths.HOME_RESOURCES);
+
   const config = {
-    navbar: {
-      logo: "https://shorturl.at/yIY46",
-      text: "SHETHH",
-    },
-    banner: {
-      media: "https://cdn.pixabay.com/video/2021/08/04/83861-584870632_large.mp4", 
-      bannerHeading: "SHETHH",
-      tagLine: "Transforming Transactions with Top-Notch Service",
-    },
-    landing: {
-      sections: [
-        {
-          title: "Discover a World of Shopping Delights at Our Shethh Haven",
-          tiles: [
-            { image: "https://shorturl.at/evS12", text: "this is tile1" },
-            { image: "https://shorturl.at/evS12", text: "this is tile2" },
-            { image: "https://shorturl.at/evS12", text: "this is tile3" },
-            { image: "https://shorturl.at/evS12", text: "this is tile4" },
-            { image: "https://shorturl.at/evS12", text: "this is tile5" },
-            { image: "https://shorturl.at/evS12", text: "this is tile6" },
-            { image: "https://shorturl.at/evS12", text: "this is tile7" },
-            { image: "https://shorturl.at/evS12", text: "this is tile8" },
-          ],
-          cols: 4,
-        },
-        {
-          title: "SHETHH SERVICE",
-          tagLine: "Elevating E-commerce, One Click at a Time",
-          tiles: [
-            { image: "https://shorturl.at/hMNV7" },
-            { image: "https://shorturl.at/hMNV7" },
-            { image: "https://shorturl.at/hMNV7" },
-          ],
-          cols: 3,
-        },
-      ],
-    },
-    footer: {
-      footerLinksData: [
-        {
-          title: "Column 1",
-          links: [
-            {
-              text: "Our Client Advisors are available to assist you by phone at +1.866.VUITTON . You can also chat or email us. ",
-              url: "#",
-            },
-            { text: "FAQs", url: "#" },
-            { text: "Product Care", url: "#" },
-            { text: "Stores", url: "#" },
-          ],
-        },
-        {
-          title: "Column 2",
-          links: [
-            { text: "Repairs", url: "#" },
-            { text: "Personalization", url: "#" },
-            { text: "Art of Gifting", url: "#" },
-            { text: "Download our Apps", url: "#" },
-          ],
-        },
-        {
-          title: "Column 3",
-          links: [
-            { text: "Fashion Shows", url: "#" },
-            { text: "Arts & Culture", url: "#" },
-            { text: "La Maison", url: "#" },
-            { text: "Sustainability", url: "#" },
-            { text: "Latest News", url: "#" },
-          ],
-        },
-        {
-          title: "Column 4",
-          links: [
-            {
-              text: "Sign up for Louis Vuitton emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.",
-              url: "#",
-            },
-            { text: "Follow Us", url: "#" },
-          ],
-        },
-      ],
-    },
+    banner: data.sections.filter(section => section.type === home.BANNER)[0],
+    sections: data.sections.filter(section => section.type !== home.BANNER)
   };
 
+  console.log("this is config: ", config)
+
   return (
-    <main className="overflow-x-hidden">
-      <Navbar config={config.navbar} />
-      <Landing banner={config.banner} sections={config.landing.sections} />
-      <Footer footerLinksData={config.footer.footerLinksData} />
-    </main>
+      <div className="flex-wrap">
+        <Banner banner={config.banner} />
+        {config.sections.map((section, index) => (
+          <Section key={index} title={section.title} tagLine={section.tagLine}>
+            <Grid gap={1} cols={home.PRODUCT_SHOWCASE === section.type ? 4 : 3}>
+              {section.attires.map((tile, tileIndex) => (
+                <Tile key={tileIndex} image={tile.media} text={tile.title} />
+              ))}
+            </Grid>
+          </Section>
+        ))}
+      </div>
   );
 }
