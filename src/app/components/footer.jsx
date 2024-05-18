@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "../components/common/Grid";
+import Grid from "./common/Grid";
 import FooterLinkGroup from "./FooterLinkGroup";
 
 const Footer = ({ footerLinksData }) => {

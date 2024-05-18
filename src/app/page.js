@@ -23,7 +23,7 @@ export default async function Home() {
         <Banner banner={config.banner} />
         {config.sections.map((section, index) => (
           <Section key={index} title={section.title} tagLine={section.tagLine}>
-            <Grid gap={1} cols={home.PRODUCT_SHOWCASE === section.type ? 4 : 3}>
+            <Grid cols={home.PRODUCT_SHOWCASE === section.type ? 4 : 3}>
               {section.attires.map((tile, tileIndex) => (
                 <Tile key={tileIndex} image={tile.media} text={tile.title} />
               ))}

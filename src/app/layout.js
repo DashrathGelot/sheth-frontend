@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import { config } from "./services/config";
 import { inter } from "./ui/fonts";
 
