@@ -21,6 +21,21 @@ const Submenu = ({ title, items }) => (
   </div>
 );
 
+const ChevronRightIcon = ({ isOpen }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={`h-4 w-4 ml-2 ${isOpen ? 'block' : 'hidden group-hover:block'}`}
+    viewBox="0 0 20 20"
+    fill="currentColor"
+  >
+    <path
+      fillRule="evenodd"
+      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
 const SlideMenu = ({ isOpen, onClose }) => {
   const [submenuOpen, setSubmenuOpen] = useState(null);
 
@@ -70,15 +85,19 @@ const SlideMenu = ({ isOpen, onClose }) => {
         <nav className="flex flex-col p-4">
           <button
             onClick={() => handleMenuClick('women')}
-            className="mb-4 text-black text-lg w-full text-left hover:underline"
+            className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center group ${
+              submenuOpen === 'women' ? 'underline' : 'hover:underline'
+            }`}
           >
-            Women
+            Women <ChevronRightIcon isOpen={submenuOpen === 'women'} />
           </button>
           <button
             onClick={() => handleMenuClick('men')}
-            className="mb-4 text-black text-lg w-full text-left hover:underline"
+            className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center group ${
+              submenuOpen === 'men' ? 'underline' : 'hover:underline'
+            }`}
           >
-            Men
+            Men <ChevronRightIcon isOpen={submenuOpen === 'men'} />
           </button>
           <a
             href="#"
