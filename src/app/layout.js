@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { config } from "./services/config";
 import { inter } from "./ui/fonts";
+import { Suspense } from "react";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} antialiased`}>
         <main className="overflow-x-hidden">
           <Navbar config={config.navbar} />
-          {children}
+          <Suspense fallback={null}>
+            {children}
+          </Suspense>
           <Footer footerLinksData={config.footer} />
         </main>
       </body>
