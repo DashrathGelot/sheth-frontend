@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import IconButton from "./common/IconButton";
-import SlideMenu from './SlideMenu';
+import Menu from './Menu';
 
 const Navbar = ({ config}) => {
   const {logo, text} = config;
@@ -28,7 +28,7 @@ const Navbar = ({ config}) => {
           <IconButton iconSrc="/cart.svg" altText="cart" />
         </div>
       </nav>
-      <SlideMenu isOpen={menuOpen} onClose={toggleMenu} />
+      <Menu isOpen={menuOpen} onClose={toggleMenu} />
     </>
   );
 };
