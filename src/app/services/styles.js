@@ -19,6 +19,10 @@ const styles = {
     bgColor: "bg-fifth",
     textColor: "text-primary",
   },
+  menuClick: {
+    textColor: "text-black",
+    textSize: "text-xl"
+  }
 };
 
 export default styles;

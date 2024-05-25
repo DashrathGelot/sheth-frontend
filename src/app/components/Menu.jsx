@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import MenuItemList from './MenuItemList';
+import MenuItem from './MenuItem';
 import Submenu from './Submenu';
-import menuData from './config';
+import config from '../services/config'; 
 
 const Menu = ({ isOpen, onClose }) => {
   const [submenuOpen, setSubmenuOpen] = useState(null);
@@ -14,8 +14,13 @@ const Menu = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleMenuClick = (menu) => {
-    setSubmenuOpen(menu);
+  const handleMenuClick = (menuKey) => {
+    const menu = config.menuData.find((menu) => menu.key === menuKey);
+    if (menu && menu.items && menu.items.length > 0) {
+      setSubmenuOpen((prev) => (prev === menuKey ? null : menuKey));
+    } else {
+      setSubmenuOpen(null);
+    }
   };
 
   useEffect(() => {
@@ -23,6 +28,8 @@ const Menu = ({ isOpen, onClose }) => {
       setSubmenuOpen(null);
     }
   }, [isOpen]);
+
+  const submenuData = config.menuData.find((menu) => menu.key === submenuOpen);
 
   return (
     <>
@@ -44,14 +51,23 @@ const Menu = ({ isOpen, onClose }) => {
           </button>
         </div>
         <nav className="flex flex-col p-4">
-          <MenuItemList handleMenuClick={handleMenuClick} submenuOpen={submenuOpen} />
+          {config.menuData.map((menu) => (
+            <MenuItem
+              key={menu.key}
+              label={menu.label}
+              hasSubmenu={!!menu.items}
+              menuKey={menu.key}
+              handleMenuClick={handleMenuClick}
+              submenuOpen={submenuOpen}
+            />
+          ))}
         </nav>
       </div>
 
-      {submenuOpen && (
+      {submenuData && (
         <Submenu
-          title={menuData.find((menu) => menu.key === submenuOpen).label}
-          items={menuData.find((menu) => menu.key === submenuOpen).items}
+          title={submenuData.label}
+          items={submenuData.items}
         />
       )}
     </>
