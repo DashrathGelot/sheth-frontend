@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* styles.css or in a relevant CSS file */
+.collapsible-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .collapsible-hidden {
+    max-height: 0;
+  }
+  
+  .collapsible-visible {
+    max-height: 200px; /* Adjust as necessary */
+  }
+  
