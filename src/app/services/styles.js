@@ -19,6 +19,10 @@ const styles = {
     bgColor: "bg-fifth",
     textColor: "text-primary",
   },
+  danger: {
+    bgColor: 'bg-red-500',
+    textColor: 'text-white',
+  },
 };
 
 export default styles;
