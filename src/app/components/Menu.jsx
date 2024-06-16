@@ -1,28 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import MenuItemList from './MenuItemList';
+import React, { useState } from 'react';
 import Submenu from './Submenu';
-import menuData from './config';
+import MenuItem from './MenuItem';
+import { config } from '../services/config';
 
 const Menu = ({ isOpen, onClose }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(null);
+  const menuData = config.menuData;
+  const [submenu, setSubmenu] = useState(null);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === 'slideMenuOverlay') {
+      setSubmenu(null);
       onClose();
     }
   };
 
   const handleMenuClick = (menu) => {
-    setSubmenuOpen(menu);
-  };
-
-  useEffect(() => {
-    if (!isOpen) {
-      setSubmenuOpen(null);
+    if (submenu === menu) {
+      setSubmenu(null);
+    } else {
+      setSubmenu(menu);
     }
-  }, [isOpen]);
+  };
 
   return (
     <>
@@ -44,16 +44,19 @@ const Menu = ({ isOpen, onClose }) => {
           </button>
         </div>
         <nav className="flex flex-col p-4">
-          <MenuItemList handleMenuClick={handleMenuClick} submenuOpen={submenuOpen} />
+          {menuData.map((menu) => (
+            <MenuItem
+              label={menu.label}
+              hasSubmenu={!!menu.items}
+              menuKey={menu.key}
+              handleMenuClick={handleMenuClick}
+              submenuOpen={submenu}
+            />
+          ))}
         </nav>
       </div>
 
-      {submenuOpen && (
-        <Submenu
-          title={menuData.find((menu) => menu.key === submenuOpen).label}
-          items={menuData.find((menu) => menu.key === submenuOpen).items}
-        />
-      )}
+      {submenu && <Submenu menu={menuData.find(menu => menu.label === submenu)}/>}
     </>
   );
 };
