@@ -1,35 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import MenuItem from './MenuItem';
+import React, { useState } from 'react';
 import Submenu from './Submenu';
-import config from '../services/config'; 
+import MenuItem from './MenuItem';
+import { config } from '../services/config';
 
 const Menu = ({ isOpen, onClose }) => {
-  const [submenuOpen, setSubmenuOpen] = useState(null);
+  const menuData = config.menuData;
+  const [submenu, setSubmenu] = useState(null);
 
   const handleOutsideClick = (e) => {
     if (e.target.id === 'slideMenuOverlay') {
-      onClose();
+      handleClose();
     }
   };
 
-  const handleMenuClick = (menuKey) => {
-    const menu = config.menuData.find((menu) => menu.key === menuKey);
-    if (menu && menu.items && menu.items.length > 0) {
-      setSubmenuOpen((prev) => (prev === menuKey ? null : menuKey));
+  const handleClose = (e) => {
+    setSubmenu(null);
+    onClose();
+  };
+
+  const handleMenuClick = (menu) => {
+    if (submenu === menu) {
+      setSubmenu(null);
     } else {
-      setSubmenuOpen(null);
+      setSubmenu(menu);
     }
   };
-
-  useEffect(() => {
-    if (!isOpen) {
-      setSubmenuOpen(null);
-    }
-  }, [isOpen]);
-
-  const submenuData = config.menuData.find((menu) => menu.key === submenuOpen);
 
   return (
     <>
@@ -46,30 +43,24 @@ const Menu = ({ isOpen, onClose }) => {
         } transition-transform duration-300 z-50 w-1/3 shadow-lg`}
       >
         <div className="p-4 flex justify-between items-center border-b">
-          <button onClick={onClose} className="text-black text-xl">
+          <button onClick={handleClose} className="text-black text-xl">
             &times; Close
           </button>
         </div>
         <nav className="flex flex-col p-4">
-          {config.menuData.map((menu) => (
+          {menuData.map((menu) => (
             <MenuItem
-              key={menu.key}
               label={menu.label}
               hasSubmenu={!!menu.items}
               menuKey={menu.key}
               handleMenuClick={handleMenuClick}
-              submenuOpen={submenuOpen}
+              submenuOpen={submenu}
             />
           ))}
         </nav>
       </div>
 
-      {submenuData && (
-        <Submenu
-          title={submenuData.label}
-          items={submenuData.items}
-        />
-      )}
+      {submenu && <Submenu menu={menuData.find(menu => menu.label === submenu)}/>}
     </>
   );
 };
