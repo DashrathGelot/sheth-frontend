@@ -24,6 +24,8 @@ const Menu = ({ isOpen, onClose }) => {
     }
   };
 
+  const submenuData = config.menuData.find((menu) => menu.key === submenuOpen);
+
   return (
     <>
       {isOpen && (
