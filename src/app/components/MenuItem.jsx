@@ -1,28 +1,31 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import IconButton from './common/IconButton';
 
-const MenuItem = ({ label, hasSubmenu, handleMenuClick, submenuOpen }) => (
-  <div
-    className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center group ${
-      submenuOpen === label ? 'underline' : 'hover:underline'
-    }`}
-  >
-    <button
-      onClick={() => handleMenuClick(hasSubmenu ? label : null)}
-      className="flex-1 text-left"
+const MenuItem = ({ label, hasSubmenu, handleMenuClick, submenuOpen }) => {
+  const [active, setActive] = useState(null);
+
+  return (
+    <div
+      className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center group ${
+        (active || submenuOpen === label)  ? 'underline' : 'hover:underline' 
+      }`} onMouseOver={() => setActive(label)} onMouseLeave={() => setActive(null)} 
     >
-      {label}
-    </button>
-    {hasSubmenu && (
-      <span
-        className={`transition-opacity duration-300 ${
-          submenuOpen === label || submenuOpen === null ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-        }`}
+      <div
+        onClick={() => handleMenuClick(label)}
+        className="flex-1 text-left"
       >
-        <IconButton iconSrc="/chevron-right.svg" altText=">" />
-      </span>
-    )}
-  </div>
-);
+        {label}
+      </div>
+      {(active || submenuOpen === label) && (
+        <span
+          className={"transition-opacity duration-300"}
+        >
+          <IconButton iconSrc="/chevron-right.svg" altText=">" />
+        </span>
+      )}
+    </div>
+  );
+} 
 
 export default MenuItem;
