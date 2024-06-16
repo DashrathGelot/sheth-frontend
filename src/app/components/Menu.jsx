@@ -11,9 +11,13 @@ const Menu = ({ isOpen, onClose }) => {
 
   const handleOutsideClick = (e) => {
     if (e.target.id === 'slideMenuOverlay') {
-      setSubmenu(null);
-      onClose();
+      handleClose();
     }
+  };
+
+  const handleClose = (e) => {
+    setSubmenu(null);
+    onClose();
   };
 
   const handleMenuClick = (menu) => {
@@ -23,8 +27,6 @@ const Menu = ({ isOpen, onClose }) => {
       setSubmenu(menu);
     }
   };
-
-  const submenuData = config.menuData.find((menu) => menu.key === submenuOpen);
 
   return (
     <>
@@ -41,7 +43,7 @@ const Menu = ({ isOpen, onClose }) => {
         } transition-transform duration-300 z-50 w-1/3 shadow-lg`}
       >
         <div className="p-4 flex justify-between items-center border-b">
-          <button onClick={onClose} className="text-black text-xl">
+          <button onClick={handleClose} className="text-black text-xl">
             &times; Close
           </button>
         </div>
