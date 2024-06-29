@@ -56,12 +56,10 @@ export const config = {
         items: ['T-Shirt', 'Polo', 'Jeans'],
       },
       {
-        label: 'Services',
-        items: [],
+        label: 'Services'
       },
       {
-        label: 'World of Shethh',
-        items: [],
+        label: 'World of Shethh'
       },
     ]
 };

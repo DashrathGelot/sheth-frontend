@@ -17,7 +17,7 @@ const MenuItem = ({ label, hasSubmenu, handleMenuClick, submenuOpen }) => {
       >
         {label}
       </div>
-      {(active || submenuOpen === label) && (
+      {(active || submenuOpen === label) && hasSubmenu && (
         <span
           className={"transition-opacity duration-300"}
         >
