@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import IconButton from "./common/IconButton";
 import Menu from './Menu';
+import Link from 'next/link';
 
 const Navbar = ({ config}) => {
   const {logo, text} = config;
@@ -25,7 +26,9 @@ const Navbar = ({ config}) => {
             <IconButton iconSrc="/search.svg" altText="search" />
           </div>
           <div className='ml-2'>
-            <IconButton iconSrc="/user.svg" altText="user" />
+            <Link href="/login">
+              <IconButton iconSrc="/user.svg" altText="user" />
+            </Link>
           </div>
           <div className='ml-2'>
             <IconButton iconSrc="/cart.svg" altText="cart" />
