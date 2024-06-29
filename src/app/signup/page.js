@@ -1,11 +1,7 @@
-import React from 'react';
-
-function Signup() {
+export default function Signup() {
   return (
     <div className="flex justify-center items-center min-h-screen p-4 md:p-10">
       <div className="bg-white rounded-lg p-6 md:p-10 max-w-6xl mx-4 w-full flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-12 lg:space-x-24">
-        
-        {/* Left Section */}
         <div className="flex flex-col md:w-1/2 lg:w-2/3 space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center">My Shethh Account</h2>
           <p className="text-center">Create an account and discover all the benefits reserved for our registered users.</p>
@@ -28,8 +24,6 @@ function Signup() {
             </div>
           </div>
         </div>
-
-        {/* Right Section */}
         <div className="flex flex-col md:w-1/2 lg:w-2/3 space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center">Sign Up with your email address</h2>
           <p className="text-center">Sign up using your email and password to create your account.</p>
@@ -69,5 +63,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;
