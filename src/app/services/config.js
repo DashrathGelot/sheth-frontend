@@ -46,6 +46,22 @@ export const config = {
       ],
     },
   ],
+  menuData: [
+    {
+      label: 'Women',
+      items: ['Women Submenu 1', 'Women Submenu 2', 'Women Submenu 3'],
+    },
+    {
+      label: 'Men',
+      items: ['T-Shirt', 'Polo', 'Jeans'],
+    },
+    {
+      label: 'Services'
+    },
+    {
+      label: 'World of Shethh'
+    },
+  ],
   products: [
     {
       image: 'https://shorturl.at/hUm9i',
