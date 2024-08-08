@@ -17,10 +17,9 @@ const Navbar = ({ config}) => {
         <div className="flex items-center">
           <IconButton iconSrc="/burger-menu.svg" altText="menu" onClick={toggleMenu} />
         </div>
-        <div className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center">
           <img src={logo} alt="Logo" className=" h-20 w-20 mr-2" />
-          <span className="text-primary tracking-widest text-3xl font-hind">{text}</span>
-        </div>
+        </Link>
         <div className="md:flex items-center">
           <div className="hidden md:flex ml-2">
             <IconButton iconSrc="/search.svg" altText="search" />

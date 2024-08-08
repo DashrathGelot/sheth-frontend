@@ -49,6 +49,7 @@ const Menu = ({ isOpen, onClose }) => {
         <nav className="flex flex-col p-4 ml-6">
           {menuData.map((menu) => (
             <MenuItem
+              key={menu.label}
               label={menu.label}
               hasSubmenu={!!menu.items}
               handleMenuClick={handleMenuClick}
