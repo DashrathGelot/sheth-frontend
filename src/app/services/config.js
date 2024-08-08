@@ -1,7 +1,7 @@
 export const config = {
   navbar: {
-    logo: "https://shorturl.at/yIY46",
-    text: "SHETHH",
+    logo: "/logo.svg",
+    text: "Rolly Rich",
   },
   footer: [
     {
@@ -59,7 +59,7 @@ export const config = {
       label: 'Services'
     },
     {
-      label: 'World of Shethh'
+      label: 'World of RollyRich'
     },
   ],
   products: [

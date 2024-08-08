@@ -1,8 +1,9 @@
 import React from 'react';
-import Card from '../components/Card';
-import { config } from '../services/config';
+import { config } from '../../services/config';
+import Card from '@/app/components/Card';
 
-const ProductList = () => {
+const ProductList = ({params}) => {
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-wrap -mx-4">
