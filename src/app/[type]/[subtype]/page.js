@@ -2,7 +2,7 @@ import React from 'react';
 import { config } from '../../services/config';
 import Card from '@/app/components/Card';
 
-const ProductList = ({params}) => {
+const ProductList = ({}) => {
 
   return (
     <div className="container mx-auto p-4">
