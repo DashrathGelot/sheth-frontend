@@ -1,12 +1,7 @@
 export const config = {
   navbar: {
-<<<<<<< HEAD
-    logo: "https://shorturl.at/yIY46",
-    text: "SHETHH",
-=======
     logo: "/logo.svg",
     text: "Rolly Rich",
->>>>>>> main
   },
   footer: [
     {
@@ -49,7 +44,6 @@ export const config = {
         },
         { text: "Follow Us", url: "#" },
       ],
-<<<<<<< HEAD
     }
   ],
   productDetails: {
@@ -66,10 +60,7 @@ export const config = {
       { title: "Accordion Title 2", details: "This is details for accordion 2." },
       { title: "Accordion Title 3", details: "This is details for accordion 3." },
     ]
-  }
-=======
-    },
-  ],
+  },
   menuData: [
     {
       label: 'Women',
@@ -136,5 +127,4 @@ export const config = {
       name: 'Product 4',
     },
   ]
->>>>>>> main
 };
