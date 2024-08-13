@@ -8,11 +8,19 @@ const HttpMethod = {
 const host = "http://localhost:8080";
 
 const paths = {
-    HOME_RESOURCES: "/api/v1/home"
+    HOME_RESOURCES: "/api/v1/home",
+    OAUTH_LOGIN: "/api/v1/oauth/login",
+    SIGN_UP: "/api/v1/signup"
+}
+
+const GOOGLE_OAUTH = {
+    ID: process.env.GOOGLE_CLIENT_ID,
+    SECRET: process.env.GOOGLE_CLIENT_SECRET
 }
 
 export {
     HttpMethod,
     paths,
-    host
+    host,
+    GOOGLE_OAUTH
 }
