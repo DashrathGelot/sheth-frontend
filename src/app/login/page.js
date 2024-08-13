@@ -1,3 +1,5 @@
+'use client'
+import { signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 
 export default function Login() {
@@ -7,7 +9,7 @@ export default function Login() {
         <div className="flex flex-col md:w-1/2 lg:w-2/3 space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center">My Shethh Account</h2>
           <p className="text-center">Create an account and discover all the benefits reserved for our registered users.</p>
-          <button className="flex items-center justify-center bg-gray-100 p-3 rounded border border-gray-300 hover:bg-gray-200">
+          <button onClick={() => signIn('google')} className="flex items-center justify-center bg-gray-100 p-3 rounded border border-gray-300 hover:bg-gray-200">
             <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" className="w-6 h-6 mr-2" />
             CONTINUE WITH GOOGLE
           </button>
@@ -38,7 +40,7 @@ export default function Login() {
             <label className="block text-gray-700 mb-2">Password</label>
             <input type="password" className="w-full p-3 border border-gray-300 rounded" required />
           </div>
-          <button className="w-full bg-primary text-white p-3 rounded hover:bg-third">CONTINUE</button>
+          <button onClick={() => signOut({redirect: false})} className="w-full bg-primary text-white p-3 rounded hover:bg-third">CONTINUE</button>
           <p className="text-xs text-gray-500 text-center mt-6">
             By creating an account or logging in, you agree with {`{This Site's}`} <a href="#" className="underline">Terms and Conditions</a> and <a href="#" className="underline">Privacy Policy</a>.
           </p>
