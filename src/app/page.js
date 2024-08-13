@@ -6,6 +6,7 @@ import rest from "./services/rest";
 
 import { HttpMethod, paths } from "./constant/urlResource";
 import { home } from "./constant/staticResources";
+import { unstable_noStore } from "next/cache";
 
 export default async function Home() {
   const data = await rest(HttpMethod.GET, paths.HOME_RESOURCES);

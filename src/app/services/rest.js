@@ -25,17 +25,9 @@ const rest = async (method, uri, payload) => {
                 res = await get(fullUrl);
         }
 
-        if (res.ok) {
-            try {
-                const response = await res.json();
-                console.log("response: ", response);
-                return response;
-            } catch (e) {
-                console.log(e);
-                return res;
-            }
-        }
-        return res;
+        const response = await res.json();
+        console.log("response: ", response);
+        return response;
     } catch(err) {
         console.log(err);
     }
