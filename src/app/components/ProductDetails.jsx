@@ -1,4 +1,3 @@
-// components/ProductDetails.jsx
 "use client";
 
 import Accordion from './Accordion';
@@ -6,8 +5,8 @@ import Button from './Button';
 import { useState } from 'react';
 
 const ProductDetails = ({ product }) => {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedColor, setSelectedColor] = useState(product.productDetails.availableColors[0]);
+  const [selectedSize, setSelectedSize] = useState(product.productDetails.availableSizes[0]);
 
   const renderOptions = (options, selectedOption, setSelectedOption, isColor) => (
     <div className="flex space-x-2">
@@ -34,24 +33,24 @@ const ProductDetails = ({ product }) => {
 
   return (
     <div className="product-details w-full lg:w-3/4 p-4">
-      <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+      <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
       <p className="text-xl mb-4">{product.price}</p>
       
       <div className="mb-4">
         <label className="block mb-2">Colors</label>
-        {renderOptions(product.colors, selectedColor, setSelectedColor, true)}
+        {renderOptions(product.productDetails.availableColors, selectedColor, setSelectedColor, true)}
       </div>
       
       <div className="mb-4">
         <label className="block mb-2">Sizes</label>
-        {renderOptions(product.sizes, selectedSize, setSelectedSize, false)}
+        {renderOptions(product.productDetails.availableSizes, selectedSize, setSelectedSize, false)}
       </div>
 
       <Button type="primary" label="Add to Cart" />
 
-      {product.accordions.map((accordion, index) => (
+      {/* {product.accordions.map((accordion, index) => (
         <Accordion key={index} title={accordion.title} details={accordion.details} />
-      ))}
+      ))} */}
     </div>
   );
 };
