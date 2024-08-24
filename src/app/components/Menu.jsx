@@ -59,7 +59,7 @@ const Menu = ({ isOpen, onClose }) => {
         </nav>
       </div>
 
-      {submenu && <Submenu menu={menuData.find(menu => menu.label === submenu)}/>}
+      {submenu && <Submenu menu={menuData.find(menu => menu.label === submenu)} onClose={handleClose}/>}
     </>
   );
 };
