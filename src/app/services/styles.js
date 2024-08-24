@@ -23,6 +23,10 @@ const styles = {
     bgColor: 'bg-red-500',
     textColor: 'text-white',
   },
+  menuClick: {
+    textColor: "text-black",
+    textSize: "text-xl"
+  }
 };
 
 export default styles;

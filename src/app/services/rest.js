@@ -25,9 +25,17 @@ const rest = async (method, uri, payload) => {
                 res = await get(fullUrl);
         }
 
-        const response = await res.json();
-        console.log("response: ", response);
-        return response;
+        if (res.ok) {
+            try {
+                const response = await res.json();
+                console.log("response: ", response);
+                return response;
+            } catch (e) {
+                console.log(e);
+                return res;
+            }
+        }
+        return undefined;
     } catch(err) {
         console.log(err);
     }
@@ -67,11 +75,21 @@ const deleteRest = async (uri, payload) => {
     });
 }
 
+const createURI = (paths) => {
+    return "/"+ paths.map(path => path.toString().replace(/ /g, "-").toLowerCase()).join("/");
+}
+
+const createCaseURI = (paths) => {
+    return "/"+ paths.map(path => path.toString().replace(/ /g, "-")).join("/");
+}
+
 export default rest;
 
 export {
     post,
     get,
     put,
-    deleteRest
+    deleteRest,
+    createURI,
+    createCaseURI
 }

@@ -1,7 +1,7 @@
 export const config = {
   navbar: {
-    logo: "https://shorturl.at/yIY46",
-    text: "SHETHH",
+    logo: "/logo.svg",
+    text: "Rolly Rich",
   },
   footer: [
     {
@@ -64,5 +64,87 @@ export const config = {
       tax: "Will be calculated according to your delivery address",
       total: 845.00
     }
-  }
+  },
+  productDetails: {
+    name: "Men Striped Polo Neck Polyester Light Green T-Shirt",
+    title: "Men Striped Polo Neck Polyester Light Green T-Shirt",
+    price: "$465.00",
+    colors: ["Light Blue", "Red", "Green", "Pink"],  
+    sizes: ["S", "M", "L", "XL"],     
+    images: [
+      "https://shorturl.at/evS12",
+      "https://shorturl.at/hUm9i"
+    ],
+    accordions: [
+      { title: "Accordion Title 1 ", details: "This is details for accordion 1." },
+      { title: "Accordion Title 2", details: "This is details for accordion 2." },
+      { title: "Accordion Title 3", details: "This is details for accordion 3." },
+    ]
+  },
+  menuData: [
+    {
+      label: 'Women',
+      items: ['Women Submenu 1', 'Women Submenu 2', 'Women Submenu 3'],
+    },
+    {
+      label: 'Men',
+      items: ['T-Shirt', 'Polo', 'Jeans'],
+    },
+    {
+      label: 'Services'
+    },
+    {
+      label: 'World of RollyRich'
+    },
+  ],
+  products: [
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Cotton And Linen Blend Tailored Flared Pants',
+      price: '1,470.00',
+      name: 'Product 1',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Printed Viscose Blouson',
+      price: '3,800.00',
+      name: 'Product 2',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Patchwork Long-Sleeved Denim Polo Shirt',
+      price: '3,300.00',
+      name: 'Product 3',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Striped Patchwork Denim Shorts',
+      price: '2,330.00',
+      name: 'Product 4',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Striped Patchwork Denim Shorts',
+      price: '2,330.00',
+      name: 'Product 4',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Striped Patchwork Denim Shorts',
+      price: '2,330.00',
+      name: 'Product 4',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Striped Patchwork Denim Shorts',
+      price: '2,330.00',
+      name: 'Product 4',
+    },
+    {
+      image: 'https://shorturl.at/hUm9i',
+      title: 'Striped Patchwork Denim Shorts',
+      price: '2,330.00',
+      name: 'Product 4',
+    },
+  ]
 };
