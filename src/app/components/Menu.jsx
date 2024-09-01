@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Submenu from './Submenu';
 import MenuItem from './MenuItem';
 import { config } from '../services/config';
-import IconButton from "./common/IconButton";
 
 const Menu = ({ isOpen, onClose }) => {
   const menuData = config.menuData;
@@ -29,24 +28,23 @@ const Menu = ({ isOpen, onClose }) => {
     }
   };
 
+  useEffect(() => {
+    if (!isOpen) {
+      setSubmenu(null);
+    }
+  }, [isOpen]);
+
   return (
     <>
       {isOpen && (
         <div
           id="slideMenuOverlay"
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={handleOutsideClick}
         ></div>
       )}
-      <div
-        className={`fixed top-0 left-0 h-full bg-white transform ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 z-50 w-1/4 shadow-lg`}
-      >
-        <div className="p-4 h-24 ml-2 flex justify-between items-center ">
-            <IconButton onClick={handleClose} iconSrc="/cross1.svg" left="Close"/> 
-        </div>
-        <nav className="flex flex-col p-4 ml-6">
+      <div className={`fixed top-0 left-0 h-full bg-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 z-40 w-full sm:w-1/5 shadow-lg`}>
+        {isOpen && <div className="flex flex-col p-4 ml-6 mt-20">
           {menuData.map((menu) => (
             <MenuItem
               key={menu.label}
@@ -56,10 +54,9 @@ const Menu = ({ isOpen, onClose }) => {
               submenuOpen={submenu}
             />
           ))}
-        </nav>
+        </div>}
       </div>
-
-      {submenu && <Submenu menu={menuData.find(menu => menu.label === submenu)} onClose={handleClose}/>}
+      {submenu && isOpen && <Submenu menu={menuData.find(menu => menu.label === submenu)} onClose={handleClose}/>}
     </>
   );
 };

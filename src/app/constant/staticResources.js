@@ -6,7 +6,10 @@ const home = {
 
 const VIDEO_EXTENSTIONS = ["mp4", "webm", "ogg"];
 
+const sizes = ["S", "M", "L", "XL"];
+
 export {
     home,
-    VIDEO_EXTENSTIONS
+    VIDEO_EXTENSTIONS,
+    sizes
 }

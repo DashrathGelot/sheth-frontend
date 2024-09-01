@@ -16,7 +16,8 @@ const paths = {
 }
 
 const UI_Paths = {
-    PRODUCT: "products"
+    PRODUCT: "product",
+    PRODUCTS: "products"
 }
 
 const GOOGLE_OAUTH = {

@@ -1,56 +1,49 @@
-"use client";
-
 import Accordion from './Accordion';
-import Button from './Button';
-import { useState } from 'react';
+import { AddButton } from './AddButton';
+import { useEffect, useState } from 'react';
+import Variant from './Variant';
+import { sizes } from '../constant/staticResources';
+import { config } from '../services/config';
 
 const ProductDetails = ({ product }) => {
-  const [selectedColor, setSelectedColor] = useState(product.productDetails.availableColors[0]);
+  const colors = product.productDetails.availableColors;
+
+  const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState(product.productDetails.availableSizes[0]);
 
-  const renderOptions = (options, selectedOption, setSelectedOption, isColor) => (
-    <div className="flex space-x-2">
-      {options.map((option, index) => (
-        <label key={index} className="cursor-pointer">
-          <input 
-            type="radio" 
-            name={isColor ? 'color' : 'size'} 
-            value={option} 
-            checked={selectedOption === option}
-            onChange={() => setSelectedOption(option)} 
-            className="hidden" 
-          />
-          <span 
-            className={`w-8 h-8 rounded-full flex items-center justify-center ${selectedOption === option ? 'border-2 border-black' : 'border'}`} 
-            style={isColor ? { backgroundColor: option } : {}}
-          >
-            {!isColor && option}
-          </span>
-        </label>
-      ))}
-    </div>
-  );
+  
+  const isAvailable = () => {
+    return product.productDetails.availableSizes.includes(selectedSize);
+  }
+
+  useEffect(() => {
+    if (colors) {
+      setSelectedColor(colors[0]);
+    }
+  }, []);
 
   return (
-    <div className="product-details w-full lg:w-3/4 p-4">
-      <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-      <p className="text-xl mb-4">{product.price}</p>
-      
-      <div className="mb-4">
-        <label className="block mb-2">Colors</label>
-        {renderOptions(product.productDetails.availableColors, selectedColor, setSelectedColor, true)}
+    <div className="p-4">
+      <h1 className="mb-4 text-3xl font-medium tracking-tight text-neutral-900">{product.title}</h1>
+      <p className="text-xl mb-8">₹ {product.price}</p>
+      {colors &&
+        <>
+          <p className='mb-2'>Color</p>
+          <div className="flex flex-wrap gap-3 mb-8">
+            { colors.map(color => <Variant key={color} color={color.toLowerCase()} label={color.charAt(0)} isCurrentVariant={color === selectedColor} onClick={() => setSelectedColor(color)}/>)}
+          </div>
+        </>
+      }
+      <p className='mb-2'>Size</p>
+      <div className="flex flex-wrap gap-3 mb-10">
+        {sizes.map(size => <Variant key={size} label={size} isCurrentVariant={size === selectedSize} onClick={() => setSelectedSize(size)} />)}
       </div>
-      
-      <div className="mb-4">
-        <label className="block mb-2">Sizes</label>
-        {renderOptions(product.productDetails.availableSizes, selectedSize, setSelectedSize, false)}
+      <AddButton name={isAvailable() ? "Add to cart" : "Out of stock"} onClick={() => console.log("clicked")} disabled={!isAvailable()}/>
+      <div className='mt-8'>
+        {product.productDetails.details.map((accordion) => (
+          <Accordion key={accordion.title} title={accordion.title} details={accordion.details} />
+        ))}
       </div>
-
-      <Button type="primary" label="Add to Cart" />
-
-      {/* {product.accordions.map((accordion, index) => (
-        <Accordion key={index} title={accordion.title} details={accordion.details} />
-      ))} */}
     </div>
   );
 };
