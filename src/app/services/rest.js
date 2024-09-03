@@ -76,11 +76,16 @@ const deleteRest = async (uri, payload) => {
 }
 
 const createURI = (paths) => {
-    return "/"+ paths.map(path => path.toString().replace(/ /g, "-").toLowerCase()).join("/");
+    return createCaseURI(paths).toLowerCase();
 }
 
 const createCaseURI = (paths) => {
-    return "/"+ paths.map(path => path.toString().replace(/ /g, "-")).join("/");
+    if (paths.filter(path => path === null || path === undefined).length > 0) return "/";
+    let url = "";
+    if (paths[0].charAt(0) !== "/") {
+        url = "/";
+    }
+    return url + paths.map(path => path.toString().replace(/ /g, "-")).join("/");
 }
 
 export default rest;

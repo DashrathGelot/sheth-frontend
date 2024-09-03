@@ -2,8 +2,8 @@ import Link from "next/link";
 import Tile from "./Tile";
 
 const CardCommon = ({ image, title, price, name }) => {
-  return <div className="bg-white shadow-md rounded-lg overflow-hidden">
-    <Tile image={image} title={title} />
+  return <div className="bg-white shadow-sm rounded-lg overflow-hidden border">
+    <Tile image={image} title={title} noShadow={true}/>
     <div className="p-4">
       {name && <h2 className="font-bold text-lg">{name}</h2>}
       {price && (
