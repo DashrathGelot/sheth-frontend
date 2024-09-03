@@ -81,7 +81,11 @@ const createURI = (paths) => {
 
 const createCaseURI = (paths) => {
     if (paths.filter(path => path === null || path === undefined).length > 0) return "/";
-    return "/"+ paths.map(path => path.toString().replace(/ /g, "-")).join("/");
+    let url = "";
+    if (paths[0].charAt(0) !== "/") {
+        url = "/";
+    }
+    return url + paths.map(path => path.toString().replace(/ /g, "-")).join("/");
 }
 
 export default rest;

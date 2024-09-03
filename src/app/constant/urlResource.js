@@ -11,8 +11,11 @@ const paths = {
     HOME_RESOURCES: "/api/v1/home",
     OAUTH_LOGIN: "/api/v1/oauth/login",
     SIGN_UP: "/api/v1/signup",
-    PRODUCTS: "api/v1/products",
-    PRODUCT: "api/v1/product"
+    PRODUCTS: "/api/v1/products",
+    PRODUCT: "/api/v1/product",
+    ADD_TO_BAG: "/api/v1/bag/add",
+    GET_BAG: "/api/v1/bag",
+    REMOVE_ITEM: "/api/v1/bag/remove"
 }
 
 const UI_Paths = {

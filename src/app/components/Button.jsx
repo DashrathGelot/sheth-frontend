@@ -1,13 +1,8 @@
 import React from "react";
-import styles from "../services/styles";
+import { AddButton } from "./AddButton";
 
-const Button = ({ type, label }) => {
-  const { bgColor, textColor, textSize } = styles[type];
-  return (
-    <button className={`p-3 rounded-sm m-2 text-fifth ${bgColor} ${textColor} ${textSize}`}>
-      {label}
-    </button>
-  );
+const Button = ({ disabled, onClick, pending, name, className }) => {
+  return <AddButton disabled={disabled} onClick={onClick} pending={pending} name={name} className={className}/>;
 };
 
 export default Button;

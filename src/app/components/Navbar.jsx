@@ -22,7 +22,7 @@ const Navbar = ({config, toggleMenu, isSidebarOpen}) => {
       <div className="flex items-center w-2/5 justify-end">
         <Search/>
         <Link href="/login"><IconButton iconSrc="/user.svg" altText="user" /></Link>
-        <IconButton iconSrc="/cart.svg" altText="cart" />
+        <Link href="/bag"><IconButton iconSrc="/cart.svg" altText="cart" /></Link>
       </div>
     </nav>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-export function AddButton({ disabled, onClick, pending, name }) {
+export function AddButton({ disabled, onClick, pending, name, className }) {
 	const isButtonDisabled = disabled || pending;
 
     const handleClick = (e) => {
@@ -13,7 +13,8 @@ export function AddButton({ disabled, onClick, pending, name }) {
 			aria-disabled={isButtonDisabled}
 			aria-busy={pending}
 			onClick={handleClick}
-			className="h-12 items-center rounded-md bg-neutral-900 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70 hover:disabled:bg-neutral-700 aria-disabled:cursor-not-allowed aria-disabled:opacity-70 hover:aria-disabled:bg-neutral-700"
+			className={`h-12 items-center rounded-md bg-neutral-900 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-neutral-800 disabled:cursor-not-allowed 
+                disabled:opacity-70 hover:disabled:bg-neutral-700 aria-disabled:cursor-not-allowed aria-disabled:opacity-70 hover:aria-disabled:bg-neutral-700 ${className && className}`}
 		>
 			{pending ? (
 				<div className="inline-flex items-center">

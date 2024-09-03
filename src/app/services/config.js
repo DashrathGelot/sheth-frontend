@@ -40,25 +40,6 @@ export const config = {
       ],
     }
   ],
-  cart: {
-    items: [
-      {
-        id: 1,
-        name: "Damier Cotton Pique Polo",
-        color: "Midnight Blue",
-        size: "S",
-        price: 845.00,
-        imageUrl: "https://shorturl.at/M5sKJ",
-        quantityOptions: [1, 2, 3, 4, 5]
-      }
-    ],
-    totals: {
-      subtotal: 845.00,
-      shipping: 0.00,
-      tax: "Will be calculated according to your delivery address",
-      total: 845.00
-    }
-  },
   productDetails: {
     name: "Men Striped Polo Neck Polyester Light Green T-Shirt",
     title: "Men Striped Polo Neck Polyester Light Green T-Shirt",
@@ -94,6 +75,5 @@ export const config = {
     {
       label: 'Services'
     },
-  ],
-  productAccords: ['Product Details', 'Delivery and Return']
+  ]
 };

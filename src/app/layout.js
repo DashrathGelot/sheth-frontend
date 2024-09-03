@@ -26,8 +26,8 @@ export default function RootLayout({ children }) {
           <Suspense fallback={null}>
             {children}
           </Suspense>
-          <Footer footerLinksData={config.footer} />
         </main>
+        <Footer footerLinksData={config.footer} />
       </body>
     </html>
   );
