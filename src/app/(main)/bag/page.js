@@ -28,15 +28,15 @@ const Cart = () => {
   if (!bag) return;
 
   return (
-    <div className="mx-16">
-      <div className='my-8'>
-        <h1 className="text-2xl font-semibold">My Shopping Cart ({bag.products.length})</h1>
+    <div className="mx-3 sm:mx-16">
+      <div className='my-4 sm:my-8'>
+        <h1 className="text-xl sm:text-2xl font-semibold">My Shopping Cart ({bag.products.length})</h1>
       </div>
-      <div className='flex flex-row justify-between '>
-        <div className='w-2/3'>
+      <div className='flex flex-col sm:flex-row justify-between'>
+        <div className='sm:w-2/3'>
           {bag.products.map(product => <Product key={product.title} product={product} onRemove={() => removeItem(product.code)}/>)}
         </div>
-        <div className='w-1/4 flex flex-col justify-around h-[42vh]'>
+        <div className='sm:w-1/4 flex flex-col justify-around sm:h-[42vh]'>
           <div>
             <div className='flex flex-row justify-between my-2 border-b rounded p-2'>
               <p>Subtotal</p>

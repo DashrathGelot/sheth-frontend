@@ -40,22 +40,6 @@ export const config = {
       ],
     }
   ],
-  productDetails: {
-    name: "Men Striped Polo Neck Polyester Light Green T-Shirt",
-    title: "Men Striped Polo Neck Polyester Light Green T-Shirt",
-    price: "$465.00",
-    colors: ["Light Blue", "Red", "Green", "Pink"],  
-    sizes: ["S", "M", "L", "XL"],     
-    images: [
-      "https://shorturl.at/evS12",
-      "https://shorturl.at/hUm9i"
-    ],
-    accordions: [
-      { title: "Accordion Title 1 ", details: "This is details for accordion 1." },
-      { title: "Accordion Title 2", details: "This is details for accordion 2." },
-      { title: "Accordion Title 3", details: "This is details for accordion 3." },
-    ]
-  },
   menuData: [
     {
       label: 'Men',
@@ -75,5 +59,9 @@ export const config = {
     {
       label: 'Services'
     },
-  ]
+  ],
+  colorVariants: {
+    "red": "bg-[red]",
+    "blue": "bg-[blue]"
+  }
 };

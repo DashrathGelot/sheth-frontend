@@ -44,7 +44,7 @@ const ProductDetails = ({ product }) => {
         <>
           <p className='sm:mb-2'>Color</p>
           <div className="flex flex-wrap gap-3 mb-4 sm:mb-8">
-            { colors.map(color => <Variant key={color} color={color.toLowerCase()} label={color.charAt(0)} isCurrentVariant={color === selectedColor} onClick={() => setSelectedColor(color)}/>)}
+            { colors.map(color => <Variant key={color} color={color.toLowerCase()} isCurrentVariant={color === selectedColor} onClick={() => setSelectedColor(color)}/>)}
           </div>
         </>
       }

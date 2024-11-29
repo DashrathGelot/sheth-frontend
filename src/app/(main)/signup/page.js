@@ -12,7 +12,7 @@ export default function Signup() {
   const [pwd, setPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
 
-  const onFieldChane = (value, key) => {
+  const onFieldChange = (value, key) => {
     switch (key) {
       case "firstName":
         setFirstName(value);
@@ -81,27 +81,27 @@ export default function Signup() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-700 mb-2">First Name</label>
-              <input value={firstName} onChange={(e) => onFieldChane(e.target.value, "firstName")} type="text" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={firstName} onChange={(e) => onFieldChange(e.target.value, "firstName")} type="text" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Last Name</label>
-              <input value={lastName} onChange={(e) => onFieldChane(e.target.value, "lastName")} type="text" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={lastName} onChange={(e) => onFieldChange(e.target.value, "lastName")} type="text" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Email Address</label>
-              <input value={email} onChange={(e) => onFieldChane(e.target.value, "email")} type="email" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={email} onChange={(e) => onFieldChange(e.target.value, "email")} type="email" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Confirm Email Address</label>
-              <input value={confirmEmail} onChange={(e) => onFieldChane(e.target.value, "confirmEmail")} type="email" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={confirmEmail} onChange={(e) => onFieldChange(e.target.value, "confirmEmail")} type="email" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Password</label>
-              <input value={pwd} onChange={(e) => onFieldChane(e.target.value, "pwd")} type="password" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={pwd} onChange={(e) => onFieldChange(e.target.value, "pwd")} type="password" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Confirm Password</label>
-              <input value={confirmPwd} onChange={(e) => onFieldChane(e.target.value, "confirmPwd")} type="password" className="w-full p-3 border border-gray-300 rounded" required />
+              <input value={confirmPwd} onChange={(e) => onFieldChange(e.target.value, "confirmPwd")} type="password" className="w-full p-3 border border-gray-300 rounded" required />
             </div>
           </div>
           <button onClick={() => onSignUp()}  className="w-full bg-primary text-white p-3 rounded hover:bg-third">SIGN UP</button>

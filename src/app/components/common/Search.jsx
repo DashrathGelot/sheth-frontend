@@ -26,7 +26,7 @@ const Search = () => {
             onBlur={onBlur}
             ref={inputRef}
         />
-        <div className="absolute right-0 top-0 mt-2 sm:mt-1.5 mr-2">
+        <div className="absolute right-0 top-0 mt-2.5 sm:mt-2 mr-2">
             <IconButton onClick={() => onOpen(isOpen)} iconSrc="/search.svg" altText="search" />
         </div>
     </div>;
