@@ -3,7 +3,7 @@ import FooterLinkGroup from "./FooterLinkGroup";
 
 const Footer = ({ footerLinksData }) => {
   return (
-    <footer className="bg-fifth text-primary py-8">
+    <footer className="bg-fifth text-primary py-16 mt-40">
       <div className="container mx-auto">
         <Grid gap={1} cols={4}>
           {footerLinksData.map((group, index) => (

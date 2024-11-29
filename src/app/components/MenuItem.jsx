@@ -7,8 +7,8 @@ const MenuItem = ({ label, hasSubmenu, handleMenuClick, submenuOpen }) => {
 
   return (
     <div
-      className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center group ${
-        (active || submenuOpen === label)  ? 'underline' : 'hover:underline' 
+      className={`mb-4 text-black text-lg w-full text-left flex justify-between items-center cursor-pointer group ${
+        (active || submenuOpen === label)  ? 'underline' : "relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-black after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center" 
       }`} onMouseOver={() => setActive(label)} onMouseLeave={() => setActive(null)} 
     >
       <div
