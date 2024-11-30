@@ -25,7 +25,7 @@ const FilterSlider = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       {/* Filter Button */}
       <IconButton
         right="Filters"
@@ -34,14 +34,22 @@ const FilterSlider = () => {
         onClick={toggleSlider}
       />
 
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleSlider}
+        ></div>
+      )}
+
       {/* Filter Slider */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform ${
+        className={`fixed bottom-0 right-0 p-12 h-full bg-white shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 sm:w-full md:max-w-[425px] flex flex-col`}
+        } transition-transform duration-300 w-full sm:max-w-[60%] lg:max-w-[550px] flex flex-col z-40`}
       >
         {/* Header */}
-        <div className="flex justify-between items-center p-4 pt-24 border-b border-gray-200">
+        <div className="flex justify-between items-center p-4 pt-20 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-800">Filter by</h2>
           <button
             onClick={toggleSlider}
@@ -57,7 +65,7 @@ const FilterSlider = () => {
           <div>
             <button
               onClick={() => toggleAccordion("color")}
-              className="w-full text-left py-2 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
+              className="w-full text-left py-4 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
             >
               Colors
               <span>{activeAccordion === "color" ? "-" : "+"}</span>
@@ -67,7 +75,7 @@ const FilterSlider = () => {
                 {["red", "blue", "green", "yellow"].map((color) => (
                   <div
                     key={color}
-                    className={`w-12 h-12 bg-${color}-500 rounded-md cursor-pointer border-2 ${
+                    className={`w-10 h-10 bg-${color}-500 rounded-md cursor-pointer border-2 ${
                       selectedColor === color ? "border-black" : "border-transparent"
                     } hover:border-gray-400`}
                     onClick={() => handleColorSelect(color)}
@@ -81,7 +89,7 @@ const FilterSlider = () => {
           <div className="mt-4 border-t border-gray-200">
             <button
               onClick={() => toggleAccordion("size")}
-              className="w-full text-left py-2 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
+              className="w-full text-left py-4 mt-4 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
             >
               Size
               <span>{activeAccordion === "size" ? "-" : "+"}</span>
@@ -91,11 +99,11 @@ const FilterSlider = () => {
                 {["XS", "S", "M", "L", "XL"].map((size) => (
                   <div
                     key={size}
-                    className={`w-12 h-12 flex items-center justify-center border-2 rounded-md cursor-pointer ${
+                    className={`w-10 h-10 flex items-center justify-center border-2 rounded-md cursor-pointer ${
                       selectedSize === size
                         ? "bg-black text-white border-black"
                         : "bg-white text-gray-700 border-gray-400"
-                    } hover:bg-gray-300`}
+                    } `}
                     onClick={() => handleSizeSelect(size)}
                   >
                     {size}
