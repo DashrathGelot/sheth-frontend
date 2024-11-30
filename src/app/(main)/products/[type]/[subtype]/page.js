@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@/app/components/Card';
 import rest, { createCaseURI, createURI } from '@/app/services/rest';
 import { HttpMethod, UI_Paths, paths } from '@/app/constant/urlResource';
-import IconButton from '@/app/components/common/IconButton';
+import FilterSlider from '@/app/components/FilterSlider';
 
 const Products = async ({params}) => {
   const products = await rest(HttpMethod.GET, createURI([paths.PRODUCTS, params.type, params.subtype]));
@@ -17,7 +17,7 @@ const Products = async ({params}) => {
     <div className="container mx-auto p-4">
       <div className='flex h-10 justify-between pb-2'>
         <div className='justify-start'>{getTitle()}</div>
-        <IconButton right="Filters" iconSrc="/filter.svg" className={"rounded-full border border-secondary p-2"}/>
+        <FilterSlider/>
       </div>
       <div className="flex flex-wrap -mx-4">
         {products.map((product) => (
