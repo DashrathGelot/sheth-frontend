@@ -1,8 +1,5 @@
 "use client";
-
 import React, { useState } from 'react';
-import rest from "../services/rest";
-import { HttpMethod, paths } from "../constant/urlResource";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
