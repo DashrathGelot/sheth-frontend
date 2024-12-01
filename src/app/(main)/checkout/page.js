@@ -4,9 +4,21 @@ import React, { useState } from "react";
 
 const Checkout = () => {
   const [activeAccordion, setActiveAccordion] = useState("identification");
+  const [identificationComplete, setIdentificationComplete] = useState(false);
+  const [deliveryComplete, setDeliveryComplete] = useState(false);
 
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? "" : section);
+  };
+
+  const markIdentificationComplete = () => {
+    setIdentificationComplete(true);
+    toggleAccordion("delivery");
+  };
+
+  const markDeliveryComplete = () => {
+    setDeliveryComplete(true);
+    toggleAccordion("payment");
   };
 
   return (
@@ -20,8 +32,14 @@ const Checkout = () => {
           onClick={() => toggleAccordion("identification")}
         >
           <span className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-md shadow-md text-sm font-bold">
-              1
+            <span
+              className={`w-8 h-8 flex items-center justify-center rounded-md shadow-md text-sm font-bold ${
+                identificationComplete
+                  ? "bg-green-500 text-white"
+                  : "bg-black text-white"
+              }`}
+            >
+              {identificationComplete ? "✓" : "1"}
             </span>
             <span>Identification</span>
           </span>
@@ -33,7 +51,10 @@ const Checkout = () => {
               <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
                 Sign In
               </button>
-              <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
+              <button
+                onClick={markIdentificationComplete}
+                className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800"
+              >
                 Continue as Guest
               </button>
             </div>
@@ -60,8 +81,14 @@ const Checkout = () => {
           onClick={() => toggleAccordion("delivery")}
         >
           <span className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-md shadow-md text-sm font-bold">
-              2
+            <span
+              className={`w-8 h-8 flex items-center justify-center rounded-md shadow-md text-sm font-bold ${
+                deliveryComplete
+                  ? "bg-green-500 text-white"
+                  : "bg-black text-white"
+              }`}
+            >
+              {deliveryComplete ? "✓" : "2"}
             </span>
             <span>Delivery Options</span>
           </span>
@@ -108,7 +135,10 @@ const Checkout = () => {
                 className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               />
             </div>
-            <button className="bg-black text-white w-full py-2 rounded-md hover:bg-gray-800">
+            <button
+              onClick={markDeliveryComplete}
+              className="bg-black text-white w-full py-2 rounded-md hover:bg-gray-800"
+            >
               Continue to Payment
             </button>
           </div>
