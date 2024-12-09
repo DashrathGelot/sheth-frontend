@@ -1,28 +1,74 @@
 'use client';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IconButton from '@/app/components/common/IconButton';
+import Accordion from "./Accordion";
+import { HttpMethod, paths } from "../constant/urlResource";
+import rest from "../services/rest";
+import Button from "./Button";
 
-const FilterSlider = () => {
+const FilterSlider = ({onFilter}) => {
+  const [filterOptions, setfilterOptions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedSize, setSelectedSize] = useState("");
-  const [activeAccordion, setActiveAccordion] = useState("");
-
+  const [colors, setColors] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [loading, setLoading] = useState(false);
+ 
   const toggleSlider = () => setIsOpen(!isOpen);
 
-  const toggleAccordion = (section) => {
-    setActiveAccordion(activeAccordion === section ? "" : section);
-  };
+  const handleOptionSelect = (title, item) => {
+    if (isColor(title)) {
+      const newColors = [...colors];
+      if (newColors.includes(item)) {
+        setColors(newColors.filter(color => color !== item))
+      } else {
+        newColors.push(item);
+        setColors(newColors);
+      }
+    } else {
+      const newSizes = [...sizes];
+      if (newSizes.includes(item)) {
+        setSizes(newSizes.filter(size => size !== item));
+      } else {
+        newSizes.push(item);
+        setSizes(newSizes);
+      }
+    }
+  }
 
-  const handleColorSelect = (color) => {
-    setSelectedColor(color);
-    console.log("Selected color:", color);
-  };
+  const onApply = async () => {
+    setLoading(true);
+    const res = await onFilter({colors, sizes});
+    console.log("in apply", res);
+    if (res) {
+      setLoading(false);
+      toggleSlider();
+    }
+  }
 
-  const handleSizeSelect = (size) => {
-    setSelectedSize(size);
-    console.log("Selected size:", size);
-  };
+  const isColor = (title) => {
+    return title === "Colors";
+  }
+
+  const isSize = (title) => !isColor(title);
+
+  const getClassName = (title, item) => {
+    if (isColor(title)) {
+      return `${colors.includes(item) ? "border-black" : "border-transparent"} hover:border-gray-400`;
+    }
+    return `${sizes.includes(item) ? "bg-black text-white border-black" : "bg-white text-gray-700 border-gray-400"} flex items-center justify-center`;
+  }
+
+  const isApplyDisable = () => colors.length === 0 && sizes.length === 0; 
+
+  useEffect(() => {
+    async function fetchOptions() {
+      const resp = await rest(HttpMethod.GET, paths.GET_FILTERS_MENU);
+      if (resp) {
+        setfilterOptions(resp);
+      }
+    }
+    fetchOptions();
+  }, []);
 
   return (
     <div className="relative">
@@ -30,7 +76,7 @@ const FilterSlider = () => {
       <IconButton
         right="Filters"
         iconSrc="/filter.svg"
-        className={"rounded-full border border-secondary p-2"}
+        className={"rounded-full border border-secondary p-2 w-28"}
         onClick={toggleSlider}
       />
 
@@ -49,82 +95,42 @@ const FilterSlider = () => {
         } transition-transform duration-300 w-full sm:max-w-[60%] lg:max-w-[550px] flex flex-col z-40`}
       >
         {/* Header */}
-        <div className="flex justify-between items-center p-4 pt-20 border-b border-gray-200">
+        <div className="flex justify-between items-center p-4 pt-20 border-gray-200">
           <h2 className="text-lg font-semibold text-gray-800">Filter by</h2>
           <button
             onClick={toggleSlider}
-            className="text-gray-500 hover:text-gray-700 text-lg"
+            className="text-gray-500 hover:text-gray-700 text-3xl"
           >
-            ✖
+            &times;
           </button>
         </div>
-
         {/* Content */}
         <div className="p-4 flex-1 overflow-auto">
-          {/* Color Accordion */}
-          <div>
-            <button
-              onClick={() => toggleAccordion("color")}
-              className="w-full text-left py-4 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
-            >
-              Colors
-              <span>{activeAccordion === "color" ? "-" : "+"}</span>
-            </button>
-            {activeAccordion === "color" && (
+          {filterOptions.map((option) => <>
+            <Accordion title={option.title}>
               <div className="mt-2 grid grid-cols-5 gap-2">
-                {["red", "blue", "green", "yellow"].map((color) => (
+                { option.contents.map((content) => (
                   <div
-                    key={color}
-                    className={`w-10 h-10 bg-${color}-500 rounded-md cursor-pointer border-2 ${
-                      selectedColor === color ? "border-black" : "border-transparent"
-                    } hover:border-gray-400`}
-                    onClick={() => handleColorSelect(color)}
-                  ></div>
+                    key={content}
+                    className={`w-10 h-10 rounded-md cursor-pointer border-2 ${getClassName(option.title, content)}`}
+                    onClick={() => handleOptionSelect(option.title, content)}
+                    style={isColor(option.title) ? {backgroundColor: content} : {}}
+                  >{isSize(option.title) && content}</div>
                 ))}
               </div>
-            )}
-          </div>
-
-          {/* Size Accordion */}
-          <div className="mt-4 border-t border-gray-200">
-            <button
-              onClick={() => toggleAccordion("size")}
-              className="w-full text-left py-4 mt-4 font-medium text-gray-700 focus:outline-none flex justify-between items-center"
-            >
-              Size
-              <span>{activeAccordion === "size" ? "-" : "+"}</span>
-            </button>
-            {activeAccordion === "size" && (
-              <div className="mt-2 grid grid-cols-5 gap-2">
-                {["XS", "S", "M", "L", "XL"].map((size) => (
-                  <div
-                    key={size}
-                    className={`w-10 h-10 flex items-center justify-center border-2 rounded-md cursor-pointer ${
-                      selectedSize === size
-                        ? "bg-black text-white border-black"
-                        : "bg-white text-gray-700 border-gray-400"
-                    } `}
-                    onClick={() => handleSizeSelect(size)}
-                  >
-                    {size}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+            </Accordion>
+            <hr className="my-4"/>
+          </>)}
         </div>
-
-        {/* Footer */}
         <div className="p-4 border-t border-gray-200">
-          <button
+          <Button
             className="w-full py-2 bg-black text-white text-center font-semibold rounded hover:bg-gray-800"
-            onClick={() => {
-              console.log("Apply Filters");
-              toggleSlider();
-            }}
+            onClick={onApply}
+            name={"Apply"}
+            disabled={isApplyDisable()}
+            pending={loading}
           >
-            Apply
-          </button>
+          </Button>
         </div>
       </div>
     </div>

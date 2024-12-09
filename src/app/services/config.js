@@ -30,13 +30,12 @@ export const config = {
       ],
     },
     {
-      title: "Contact US",
+      title: "Email Sign-Up",
       links: [
         {
-          text: "Subscribe to Rolly Rich emails to stay updated with the latest news from the Maison, including exclusive online pre-launches and new collections.",
+          text: "Sign up for Rolly Rich emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.",
           url: "#",
-        },
-        { text: "Follow Us", url: "#" },
+        }
       ],
     }
   ],
