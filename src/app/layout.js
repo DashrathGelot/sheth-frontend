@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <header>
+        <header className="h-20">
           <Navbar isSidebarOpen={menuOpen} config={config.navbar} toggleMenu={toggleMenu}/>
           <Menu isOpen={menuOpen} onClose={toggleMenu} />
         </header>
-        <main className="overflow-x-hidden top-20 relative">
+        <main className="overflow-x-hidden">
           <Suspense fallback={null}>
             {children}
           </Suspense>

@@ -37,11 +37,6 @@ const Footer = ({ footerLinksData }) => {
               altText="LinkedIn"
               onClick={() => window.open('https://linkedin.com', '_blank')}
             />
-            <IconButton
-              iconSrc="/pinterest.svg"
-              altText="Pinterest"
-              onClick={() => window.open('https://pinterest.com', '_blank')}
-            />
           </div>
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center">

@@ -1,17 +1,18 @@
 import { isVideo } from "../lib/utils";
+import Image from "./common/Image";
 
 const Banner = ({ banner }) => {
   const { attires, title, tagLine } = banner;
   const media = attires[0].media;
   return (
-    <div className="relative w-screen h-screen">
+    <div className="w-screen">
       {isVideo(media) ? (
         <video
           autoPlay
           muted
           loop
-          className="absolute inset-0 w-full h-auto"
-          style={{ width: "100%", height: "90vh", objectFit: "cover" }}
+          className="inset-0 w-full"
+          style={{ width: "100vw", objectFit: "contain" }}
         >
           <source src={media} type={`video/${media.split('.').pop()}`} />
         </video>
@@ -19,16 +20,20 @@ const Banner = ({ banner }) => {
         <img
           src={media}
           alt="Banner"
-          className="absolute inset-0 w-full h-auto"
+          className="inset-0 w-full h-auto"
           style={{ width: "100%", height: "90vh", objectFit: "cover" }}
         />
+        // <Image 
+        //   src={media}
+        //   alt="Banner"
+        // />
       )}
-      <div className="absolute inset-0 flex flex-col justify-center items-center">
+      {(title || tagLine) && <div className="absolute inset-0 flex flex-col justify-center items-center">
         <div className="text-center" style={{ marginTop: "25%" }}>
           <h1 className="text-4xl font-bold font-hind text-white">{title}</h1>
           <p className="text-white">{tagLine}</p>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

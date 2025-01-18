@@ -8,7 +8,7 @@ export const config = {
       title: "Help",
       links: [
         {
-          text: "Need help? Our Client Advisors are just a call away at +91987654321. You can also connect with us through email for personalized support at help@rollyrich.com.",
+          text: "Need help? Our Client Advisors are just a E-mail away at help@rollyrich.com.",
           url: "#",
         },
         { text: "FAQs", url: "#" },
