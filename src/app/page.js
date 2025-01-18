@@ -11,25 +11,26 @@ import Link from "next/link";
 export default async function Home() {
   const data = await rest(HttpMethod.GET, paths.HOME_RESOURCES);
 
-  const config = {
-    banner: data.sections.filter(section => section.type === home.BANNER)[0],
-    sections: data.sections.filter(section => section.type !== home.BANNER)
-  };
+  const isBanner = (showAs) => {
+    return showAs === home.BANNER;
+  }
 
   return (
       <div className="flex-wrap">
-        <Banner banner={config.banner} />
-        {config.sections.map((section, index) => (
-          <Section key={index} title={section.title} tagLine={section.tagLine}>
-            <Grid cols={home.PRODUCT_SHOWCASE === section.type ? 4 : 3}>
-              {section.attires.map((attire) => (
-                <Link key={attire.title} href={createURI([UI_Paths.PRODUCTS, attire.type, attire.subType])}>
-                  <Tile image={attire.media} text={attire.title} />
-                </Link>
-              ))}
-            </Grid>
-          </Section>
-        ))}
+        {
+          data.sections.map((section, index) => 
+            isBanner(section.showAs) ? <Banner key={index} banner={section} /> :
+            <Section key={index} title={section.title} tagLine={section.tagLine}>
+              <Grid cols={section.type.includes(home.PRODUCT_SHOWCASE) ? 4 : 3}>
+                {section.attires.map((attire) => (
+                  <Link key={attire.title} href={createURI([UI_Paths.PRODUCTS, attire.type, attire.subType])}>
+                    <Tile image={attire.media} text={attire.title} />
+                  </Link>
+                ))}
+              </Grid>
+            </Section>
+          )
+        }
       </div>
   );
 }

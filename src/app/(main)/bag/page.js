@@ -15,7 +15,9 @@ const Cart = () => {
     setBag(bag);
   }
 
-  const handleCheckout = () => {}
+  const handleCheckout = () => {
+    
+  }
 
   useEffect(() => {
     async function fetchProducts() {
