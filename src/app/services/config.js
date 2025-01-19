@@ -61,6 +61,8 @@ export const config = {
   ],
   colorVariants: {
     "red": "bg-[red]",
-    "blue": "bg-[blue]"
+    "blue": "bg-[blue]",
+    "black": "bg-[black]",
+    "gray": "bg-[gray]"
   }
 };

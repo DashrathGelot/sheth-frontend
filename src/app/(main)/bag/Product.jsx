@@ -4,7 +4,7 @@ import { BAG_PRODUCT_QOUNTITY } from "@/app/constant/staticResources";
 export default function Product({product, onRemove}) {
     return <div className='flex flex-row sm:justify-between gap-1 sm:gap-0 p-1 my-4 border-b rounded sm:border-none sm:my-0'>
       <div className="w-1/3 sm:w-2/5">
-        <img src={product.images[0]} alt={product.title}/>
+        <img src={product.images[1]} alt={product.title}/>
       </div>
       <div className='w-[64%] sm:w-[55%] flex flex-col justify-around'>
         <div>

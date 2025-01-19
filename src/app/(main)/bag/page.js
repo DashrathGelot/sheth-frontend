@@ -6,8 +6,10 @@ import { get } from '@/app/services/storage';
 import { useEffect, useState } from 'react';
 import Product from './Product';
 import Button from '@/app/components/Button';
+import { useRouter } from 'next/navigation'
 
 const Cart = () => {
+  const router = useRouter();
   const [bag, setBag] = useState(null);
 
   const removeItem = async (code) => {
@@ -16,7 +18,7 @@ const Cart = () => {
   }
 
   const handleCheckout = () => {
-    
+    router.push('/checkout');
   }
 
   useEffect(() => {
