@@ -5,6 +5,7 @@ const HttpMethod = {
     DELETE: "DELETE"
 }
 
+// const host = "http://ec2-3-109-212-242.ap-south-1.compute.amazonaws.com:8080";
 const host = "http://localhost:8080";
 
 const paths = {
@@ -15,7 +16,9 @@ const paths = {
     PRODUCT: "/api/v1/product",
     ADD_TO_BAG: "/api/v1/bag/add",
     GET_BAG: "/api/v1/bag",
-    REMOVE_ITEM: "/api/v1/bag/remove"
+    REMOVE_ITEM: "/api/v1/bag/remove",
+    GET_FILTERS_MENU: "/api/v1/menu/filters",
+    FILTERED_PRODUCTS: "/api/v1/products/filter"
 }
 
 const UI_Paths = {

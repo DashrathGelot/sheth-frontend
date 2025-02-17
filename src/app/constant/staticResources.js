@@ -1,7 +1,8 @@
 const home = {
     BANNER: "banner",
     PRODUCT_SHOWCASE: "productShowcase",
-    SERVICE: "service"
+    SERVICE: "service",
+    CARD: "card"
 }
 
 const VIDEO_EXTENSTIONS = ["mp4", "webm", "ogg"];

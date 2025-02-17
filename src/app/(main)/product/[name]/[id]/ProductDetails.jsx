@@ -54,7 +54,9 @@ const ProductDetails = ({ product }) => {
       </div>
       <AddButton name={isAvailable() ? "Add to cart" : "Out of stock"} onClick={handleCart} disabled={!isAvailable()}/>
       <div className='mt-4 sm:mt-8'>
-        {product.productDetails.details.map(accordion => <Accordion key={accordion.title} title={accordion.title} details={accordion.details} />)}
+        { product.productDetails.details.map(accordion => <Accordion key={accordion.title} title={accordion.title} className={"py-3 px-2 border rounded my-2"}>
+          <div className="overflow-hidden">{accordion.details}</div>
+        </Accordion>)}
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const config = {
       title: "Help",
       links: [
         {
-          text: "Need help? Our Client Advisors are just a call away at +91987654321. You can also connect with us through email for personalized support at help@rollyrich.com.",
+          text: "Need help? Our Client Advisors are just a E-mail away at help@rollyrich.com.",
           url: "#",
         },
         { text: "FAQs", url: "#" },
@@ -30,13 +30,12 @@ export const config = {
       ],
     },
     {
-      title: "Contact US",
+      title: "Email Sign-Up",
       links: [
         {
-          text: "Subscribe to Rolly Rich emails to stay updated with the latest news from the Maison, including exclusive online pre-launches and new collections.",
+          text: "Sign up for Rolly Rich emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.",
           url: "#",
-        },
-        { text: "Follow Us", url: "#" },
+        }
       ],
     }
   ],
@@ -62,6 +61,8 @@ export const config = {
   ],
   colorVariants: {
     "red": "bg-[red]",
-    "blue": "bg-[blue]"
+    "blue": "bg-[blue]",
+    "black": "bg-[black]",
+    "gray": "bg-[gray]"
   }
 };
