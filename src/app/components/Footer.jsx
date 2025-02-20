@@ -1,5 +1,6 @@
 import IconButton from "./common/IconButton";
 import FooterLinkGroup from "./FooterLinkGroup";
+import Link from "next/link";
 
 const Footer = ({ footerLinksData }) => {
   return (
@@ -14,28 +15,30 @@ const Footer = ({ footerLinksData }) => {
             />
           ))}
         </div>
-        <div className="mt-10 border-gray-200 pt-4 flex flex-col items-center space-y-4 px-4 py-6 relative"> 
-          <h3 className="text-lg font-semibold mb-4">Follow Us on Social Media</h3>
+        <div className="mt-10 border-gray-200 pt-4 flex flex-col items-center space-y-4 px-4 py-6 relative">
+          <h3 className="text-lg font-semibold mb-4">
+            Follow Us on Social Media
+          </h3>
           <div className="flex space-x-6">
             <IconButton
               iconSrc="/facebook.svg"
               altText="Facebook"
-              onClick={() => window.open('https://facebook.com', '_blank')}
+              onClick={() => window.open("https://facebook.com", "_blank")}
             />
             <IconButton
               iconSrc="/twitter.svg"
               altText="Twitter"
-              onClick={() => window.open('https://twitter.com', '_blank')}
+              onClick={() => window.open("https://twitter.com", "_blank")}
             />
             <IconButton
               iconSrc="/instagram.svg"
               altText="Instagram"
-              onClick={() => window.open('https://instagram.com', '_blank')}
+              onClick={() => window.open("https://instagram.com", "_blank")}
             />
             <IconButton
               iconSrc="/linkedin.svg"
               altText="LinkedIn"
-              onClick={() => window.open('https://linkedin.com', '_blank')}
+              onClick={() => window.open("https://linkedin.com", "_blank")}
             />
           </div>
         </div>
@@ -47,9 +50,9 @@ const Footer = ({ footerLinksData }) => {
             <a href="#" className="hover:underline">
               Legal Notices
             </a>
-            <a href="#" className="hover:underline">
+            <Link href="/privacyPolicy" className="hover:underline">
               Privacy Policy
-            </a>
+            </Link>
             <a href="#" className="hover:underline">
               Accessibility
             </a>
