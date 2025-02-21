@@ -4,7 +4,7 @@ const rest = async (method, uri, payload) => {
     try {
         let res;
         const fullUrl = host + uri;
-        
+
         console.log("Method: ", method, " URL: ", fullUrl);
 
         if (payload !== undefined) {
@@ -35,8 +35,8 @@ const rest = async (method, uri, payload) => {
                 return res;
             }
         }
-        return undefined;
-    } catch(err) {
+        return res;
+    } catch (err) {
         console.log(err);
     }
 }
