@@ -54,9 +54,24 @@ const ProductDetails = ({ product }) => {
       </div>
       <AddButton name={isAvailable() ? "Add to cart" : "Out of stock"} onClick={handleCart} disabled={!isAvailable()}/>
       <div className='mt-4 sm:mt-8'>
-        { product.productDetails.details.map(accordion => <Accordion key={accordion.title} title={accordion.title} className={"py-3 px-2 border rounded my-2"}>
-          <div className="overflow-hidden">{accordion.details}</div>
-        </Accordion>)}
+        {product.productDetails.details.map((accordion, index) => {
+          const isLastThree = index >= product.productDetails.details.length - 3;
+          return (
+            <Accordion key={accordion.title} title={accordion.title} className={"py-3 px-2 border rounded my-2"}>
+              <div className="overflow-hidden">
+                {isLastThree && accordion.details.includes(",") ? (
+                  <ul className="list-disc pl-5">
+                    {accordion.details.split(",").map((item, index) => (
+                      <li key={index}>{item.trim()}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{accordion.details}</p>
+                )}
+              </div>
+            </Accordion>
+          );
+        })}
       </div>
     </div>
   );

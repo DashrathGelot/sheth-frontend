@@ -53,7 +53,7 @@ const FilterSlider = ({onFilter}) => {
 
   const getClassName = (title, item) => {
     if (isColor(title)) {
-      return `${colors.includes(item) ? "border-black" : "border-transparent"} hover:border-gray-400`;
+      return `${colors.includes(item) ? "border-black" : "border-gray-400"} hover:border-gray-400`;
     }
     return `${sizes.includes(item) ? "bg-black text-white border-black" : "bg-white text-gray-700 border-gray-400"} flex items-center justify-center`;
   }
