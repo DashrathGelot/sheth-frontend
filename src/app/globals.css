@@ -17,3 +17,9 @@
 .collapsible-visible {
   max-height: 200px; /* Adjust as necessary */
 }
+
+@media (max-width: 640px) { /* Mobile screens */
+  .mobile-margin-hero {
+    margin-top: 75px !important;
+  }
+}
