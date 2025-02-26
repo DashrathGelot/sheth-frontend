@@ -47,17 +47,6 @@ const Checkout = () => {
         </button>
         {activeAccordion === "identification" && (
           <div className="p-6 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-              <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
-                Sign In
-              </button>
-              <button
-                onClick={markIdentificationComplete}
-                className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800"
-              >
-                Continue as Guest
-              </button>
-            </div>
             <div className="space-y-4">
               <input
                 type="email"
@@ -69,6 +58,17 @@ const Checkout = () => {
                 placeholder="Mobile Number"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               />
+            </div>
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+              <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
+                Sign In
+              </button>
+              <button
+                onClick={markIdentificationComplete}
+                className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800"
+              >
+                Continue as Guest
+              </button>
             </div>
           </div>
         )}

@@ -8,7 +8,7 @@ export const config = {
       title: "Help",
       links: [
         {
-          text: "Need help? Our Client Advisors are just a E-mail away at help@rollyrich.com.",
+          text: "Need help? Our Client Advisors are just a E-mail away at contact@rollyrich.com.",
           url: "#",
         },
         { text: "FAQs", url: "#" },
@@ -34,7 +34,7 @@ export const config = {
       links: [
         {
           text: "Sign up for Rolly Rich emails and receive the latest news from the Maison, including exclusive online pre-launches and new collections.",
-          url: "#",
+          url: "/signup",
         }
       ],
     }
@@ -51,13 +51,7 @@ export const config = {
     {
       label: 'Capsules',
       items: ['T-Shirt', 'Polo', 'Jeans'],
-    },
-    {
-      label: 'World of RollyRich'
-    },
-    {
-      label: 'Services'
-    },
+    }
   ],
   colorVariants: {
     "red": "bg-[red]",

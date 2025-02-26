@@ -106,12 +106,12 @@ const FilterSlider = ({onFilter}) => {
         </div>
         {/* Content */}
         <div className="p-4 flex-1 overflow-auto">
-          {filterOptions.map((option) => <>
+          {filterOptions.map((option) => <React.Fragment key={option.title}>
             <Accordion title={option.title}>
               <div className="mt-2 grid grid-cols-5 gap-2">
-                { option.contents.map((content) => (
+                { option.contents.map((content, index) => (
                   <div
-                    key={content}
+                    key={index}
                     className={`w-10 h-10 rounded-md cursor-pointer border-2 ${getClassName(option.title, content)}`}
                     onClick={() => handleOptionSelect(option.title, content)}
                     style={isColor(option.title) ? {backgroundColor: content} : {}}
@@ -120,7 +120,7 @@ const FilterSlider = ({onFilter}) => {
               </div>
             </Accordion>
             <hr className="my-4"/>
-          </>)}
+          </React.Fragment>)}
         </div>
         <div className="p-4 border-t border-gray-200">
           <Button
