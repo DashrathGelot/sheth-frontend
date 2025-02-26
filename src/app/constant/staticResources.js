@@ -5,7 +5,7 @@ const home = {
     CARD: "card"
 }
 
-const VIDEO_EXTENSTIONS = ["mp4", "webm", "ogg"];
+const VIDEO_EXTENSTIONS = ["mp4", "webm", "ogg", "mov"];
 
 const sizes = ["S", "M", "L", "XL"];
 
