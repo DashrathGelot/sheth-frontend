@@ -34,8 +34,14 @@ const ProductDetails = ({ product, params }) => {
       setError("Select size");
       return;
     }
+
+    let productCode = product.code;
+    if (sizeId) {
+      productCode = generateProductCode(product.code, sizeId, SIZE);
+    }
+
     const bagId = get(BAG_KEY);
-    const payload = {productCode: generateProductCode(product.code, sizeId, SIZE)};
+    const payload = {productCode: productCode};
     if (bagId) {
       payload["bagId"] = bagId;
     }
