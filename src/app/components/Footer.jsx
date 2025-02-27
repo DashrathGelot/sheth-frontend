@@ -44,18 +44,12 @@ const Footer = ({ footerLinksData }) => {
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <div className="flex space-x-6 text-gray-600 text-sm">
-            <a href="#" className="hover:underline">
-              Sitemap
-            </a>
-            <a href="#" className="hover:underline">
+            <Link href="/privacyPolicy" className="hover:underline">
               Legal Notices
-            </a>
+            </Link>
             <Link href="/privacyPolicy" className="hover:underline">
               Privacy Policy
             </Link>
-            <a href="#" className="hover:underline">
-              Accessibility
-            </a>
           </div>
           <p className="mt-4 sm:mt-0 text-sm text-gray-600">© Rolly Rich</p>
         </div>

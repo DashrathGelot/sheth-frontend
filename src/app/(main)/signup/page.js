@@ -60,15 +60,7 @@ export default function Signup() {
           <div className="flex justify-around mt-8">
             <div className="flex flex-col items-center space-y-2 w-1/3">
               <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Secure" className="w-6 h-6" />
-              <p className="text-center text-sm">Securely save your payment information and addresses to speed up purchases</p>
-            </div>
-            <div className="flex flex-col items-center space-y-2 w-1/3">
-              <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Secure" className="w-6 h-6" />
-              <p className="text-center text-sm">Securely save your payment information and addresses to speed up purchases</p>
-            </div>
-            <div className="flex flex-col items-center space-y-2 w-1/3">
-              <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="Secure" className="w-6 h-6" />
-              <p className="text-center text-sm">Securely save your payment information and addresses to speed up purchases</p>
+              <p className="text-center text-sm">Securely save your personal information and addresses to speed up purchases</p>
             </div>
           </div>
         </div>
@@ -106,7 +98,6 @@ export default function Signup() {
             By creating an account, you agree with Rolly Rich <a href="#" className="underline">Terms and Conditions</a> and <a href="#" className="underline">Privacy Policy</a>.
           </p>
         </div>
-        
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const Banner = ({ banner }) => {
           src={media}
           alt="Banner"
           className="inset-0 w-full h-auto"
-          style={{ width: "100%", height: "90vh", objectFit: "cover" }}
+          style={{ objectFit: "cover" }}
         />
         // <Image 
         //   src={media}

@@ -7,6 +7,7 @@ import { config } from "./services/config";
 import { inter } from "./ui/fonts";
 import { Suspense, useState } from "react";
 import Menu from "./components/Menu";
+import Loading from "./loading";
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
           <Menu isOpen={menuOpen} onClose={toggleMenu} />
         </header>
         <main className="overflow-x-hidden">
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loading/>}>
             {children}
           </Suspense>
         </main>

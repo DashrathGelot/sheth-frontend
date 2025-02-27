@@ -5,21 +5,23 @@ import ProductDetails from './ProductDetails';
 import rest, { createCaseURI } from '@/app/services/rest';
 import { HttpMethod, paths } from '@/app/constant/urlResource';
 import { isVideo } from '@/app/lib/utils';
+import Loading from './loading';
 
 const Product = ({params}) => {
   const [product, setProduct] = useState(undefined);
   const [currentImage, setCurrentImage] = useState("");
 
+  const fetchProduct = async (uri) => {
+    const product = await rest(HttpMethod.GET, uri);
+    setProduct(product);
+    setCurrentImage(product.images[0]);
+  }
+
   useEffect(() => {
-    async function fetchProduct() {
-      const product = await rest(HttpMethod.GET, createCaseURI([paths.PRODUCT, params.id]));
-      setProduct(product);
-      setCurrentImage(product.images[0])
-    }
-    fetchProduct();
+    fetchProduct(createCaseURI([paths.PRODUCT, params.id]));
   }, [])
 
-  if (!product) return;
+  if (!product) return <Loading/>;
 
   return (
     <div className="container mx-auto min-h-screen sm:mt-14 flex flex-col sm:flex-row justify-between p-4 gap-5 sm:gap-40">
@@ -57,7 +59,7 @@ const Product = ({params}) => {
         </div>
       </div>
       <div className="w-full sm:w-1/2 flex justify-end">
-        <ProductDetails product={product} />
+        <ProductDetails product={product} params={params}/>
       </div>
     </div>
   );
