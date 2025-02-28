@@ -88,6 +88,12 @@ const createCaseURI = (paths) => {
     return url + paths.map(path => path.toString().replace(/ /g, "-")).join("/");
 }
 
+// [{key: k, value: v}]
+const createQueryParam = (params) => {
+    let path = params.map(param => param.key + "=" + param.value).join("&");
+    return "?" + path;
+}
+
 export default rest;
 
 export {
@@ -96,5 +102,6 @@ export {
     put,
     deleteRest,
     createURI,
-    createCaseURI
+    createCaseURI,
+    createQueryParam
 }

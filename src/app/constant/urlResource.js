@@ -19,7 +19,8 @@ const paths = {
     GET_BAG: "/api/v1/bag",
     REMOVE_ITEM: "/api/v1/bag/remove",
     GET_FILTERS_MENU: "/api/v1/menu/filters",
-    FILTERED_PRODUCTS: "/api/v1/products/filter"
+    FILTERED_PRODUCTS: "/api/v1/products/filter",
+    INIT_PAYMENT: "/api/v1/initPayment"
 }
 
 const UI_Paths = {

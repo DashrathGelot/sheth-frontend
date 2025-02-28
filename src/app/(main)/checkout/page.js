@@ -1,5 +1,7 @@
 'use client';
 
+import { HttpMethod, paths } from "@/app/constant/urlResource";
+import rest, { createCaseURI, createURI } from "@/app/services/rest";
 import React, { useState } from "react";
 
 const Checkout = () => {
@@ -21,8 +23,35 @@ const Checkout = () => {
     toggleAccordion("payment");
   };
 
+  const onPayment = async () => {
+    const payment = await rest(HttpMethod.GET, createCaseURI([paths.INIT_PAYMENT]));
+    const options = {
+      "key": payment.clientId,
+      "order_id": payment.paymentId,
+      "handler": function (response) {
+        console.log(response)
+          alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature)
+      }
+    };
+
+    const razorpay = new Razorpay(options);
+    razorpay.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    razorpay.open();
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-4">
+      <script src="https://checkout.razorpay.com/v1/checkout.js"/>
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
 
       {/* Identification Accordion */}
@@ -47,17 +76,6 @@ const Checkout = () => {
         </button>
         {activeAccordion === "identification" && (
           <div className="p-6 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-              <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
-                Sign In
-              </button>
-              <button
-                onClick={markIdentificationComplete}
-                className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800"
-              >
-                Continue as Guest
-              </button>
-            </div>
             <div className="space-y-4">
               <input
                 type="email"
@@ -69,6 +87,17 @@ const Checkout = () => {
                 placeholder="Mobile Number"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
               />
+            </div>
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+              <button className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800">
+                Sign In
+              </button>
+              <button
+                onClick={markIdentificationComplete}
+                className="bg-black text-white w-full sm:w-auto px-4 py-2 rounded-md hover:bg-gray-800"
+              >
+                Continue as Guest
+              </button>
             </div>
           </div>
         )}
@@ -136,32 +165,11 @@ const Checkout = () => {
               />
             </div>
             <button
-              onClick={markDeliveryComplete}
+              onClick={onPayment}
               className="bg-black text-white w-full py-2 rounded-md hover:bg-gray-800"
             >
               Continue to Payment
             </button>
-          </div>
-        )}
-      </div>
-
-      {/* Payment Accordion */}
-      <div className="border border-gray-300 rounded-lg">
-        <button
-          className="w-full text-left py-4 px-6 text-lg font-medium text-black bg-gray-100 flex justify-between items-center"
-          onClick={() => toggleAccordion("payment")}
-        >
-          <span className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-black text-white rounded-md shadow-md text-sm font-bold">
-              3
-            </span>
-            <span>Payment</span>
-          </span>
-          <span>{activeAccordion === "payment" ? "-" : "+"}</span>
-        </button>
-        {activeAccordion === "payment" && (
-          <div className="p-6">
-            <p className="text-gray-500">Payment options will be displayed here.</p>
           </div>
         )}
       </div>

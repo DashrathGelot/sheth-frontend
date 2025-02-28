@@ -5,7 +5,7 @@ const Banner = ({ banner }) => {
   const { attires, title, tagLine } = banner;
   const media = attires[0].media;
   return (
-    <div className="w-screen">
+    <div className="w-screen relative">
       {isVideo(media) ? (
         <video
           autoPlay
@@ -21,19 +21,23 @@ const Banner = ({ banner }) => {
           src={media}
           alt="Banner"
           className="inset-0 w-full h-auto"
-          style={{ width: "100%", height: "90vh", objectFit: "cover" }}
+          style={{ objectFit: "cover" }}
         />
         // <Image 
         //   src={media}
         //   alt="Banner"
         // />
       )}
-      {(title || tagLine) && <div className="absolute inset-0 flex flex-col justify-center items-center">
-        <div className="text-center" style={{ marginTop: "25%" }}>
-          <h1 className="text-4xl font-bold font-hind text-white">{title}</h1>
-          <p className="text-white">{tagLine}</p>
+      {(title || tagLine) && (
+        <div className="absolute inset-0 flex flex-col items-center md:justify-center">
+          <div className=" relative text-center mobile-margin-hero ">
+            <h1 className="text-[30px] md:text-4xl font-bold font-hind text-white">
+              {title}
+            </h1>
+            <p className="text-[15px] md:text-base text-white">{tagLine}</p>
+          </div>
         </div>
-      </div>}
+      )}
     </div>
   );
 };

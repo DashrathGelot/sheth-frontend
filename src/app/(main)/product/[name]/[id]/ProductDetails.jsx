@@ -1,23 +1,47 @@
 'use client'
 import Accordion from '../../../../components/Accordion';
 import { AddButton } from '../../../../components/AddButton';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Variant from '../../../../components/Variant';
-import { BAG_KEY, sizes } from '../../../../constant/staticResources';
+import { BAG_KEY, COLOR, SIZE } from '../../../../constant/staticResources';
 import { useRouter } from 'next/navigation'
-import rest from '@/app/services/rest';
-import { HttpMethod, paths } from '@/app/constant/urlResource';
+import rest, { createCaseURI } from '@/app/services/rest';
+import { HttpMethod, paths, UI_Paths } from '@/app/constant/urlResource';
 import { get, set } from '@/app/services/storage';
+import { generateProductCode } from '@/app/services/service';
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ product, params }) => {
   const colors = product.productDetails.availableColors;
-  const [selectedColor, setSelectedColor] = useState("");
+  const sizes = product.productDetails.availableSizes;
   const [selectedSize, setSelectedSize] = useState(product.size);
+  const [error, setError] = useState(undefined);
+  const [sizeId, setSizeId] = useState(undefined);
   const router = useRouter();
 
+  const onColor = (color) => {
+    const code = generateProductCode(product.code, color.id, COLOR);
+    router.push(createCaseURI([UI_Paths.PRODUCT, params.name, code]));
+  }
+
+  const onSize = (size) => {
+    setSelectedSize(size.name);
+    setSizeId(size.id);
+    setError(undefined);
+  }
+
   const handleCart = async () => {
+    if (!selectedSize) {
+      setError("Select size");
+      return;
+    }
+
+    let productCode = product.code;
+    if (sizeId) {
+      productCode = generateProductCode(product.code, sizeId, SIZE);
+    }
+
     const bagId = get(BAG_KEY);
-    const payload = {productCode: product.code};
+    const payload = {productCode: productCode};
     if (bagId) {
       payload["bagId"] = bagId;
     }
@@ -25,16 +49,6 @@ const ProductDetails = ({ product }) => {
     set(BAG_KEY, data.bagId);
     router.push("/bag");
   }
-  
-  const isAvailable = () => {
-    return product.productDetails.availableSizes.includes(selectedSize);
-  }
-
-  useEffect(() => {
-    if (product.color) {
-      setSelectedColor(product.color);
-    }
-  }, []);
 
   return (
     <div className="p-4">
@@ -44,19 +58,37 @@ const ProductDetails = ({ product }) => {
         <>
           <p className='sm:mb-2'>Color</p>
           <div className="flex flex-wrap gap-3 mb-4 sm:mb-8">
-            { colors.map(color => <Variant key={color} color={color.toLowerCase()} isCurrentVariant={color === selectedColor} onClick={() => setSelectedColor(color)}/>)}
+            { colors.map(color => <Variant key={color.id} color={color.name.toLowerCase()} isCurrentVariant={color.name === product.color} onClick={() => onColor(color)}/>)}
           </div>
         </>
       }
       <p className='sm:mb-2'>Size</p>
+      {
+        error && <p className="text-red-500">{error}</p>
+      }
       <div className="flex flex-wrap gap-3 mb-4 sm:mb-10">
-        {sizes.map(size => <Variant key={size} label={size} isCurrentVariant={size === selectedSize} onClick={() => setSelectedSize(size)} />)}
+        {sizes.map(size => <Variant key={size.id} label={size.name} isCurrentVariant={size.name === selectedSize} onClick={() => onSize(size)} />)}
       </div>
-      <AddButton name={isAvailable() ? "Add to cart" : "Out of stock"} onClick={handleCart} disabled={!isAvailable()}/>
+      <AddButton name={"Add to cart"} onClick={handleCart}/>
       <div className='mt-4 sm:mt-8'>
-        { product.productDetails.details.map(accordion => <Accordion key={accordion.title} title={accordion.title} className={"py-3 px-2 border rounded my-2"}>
-          <div className="overflow-hidden">{accordion.details}</div>
-        </Accordion>)}
+        {product.productDetails.details.map((accordion, index) => {
+          const isLastThree = index >= product.productDetails.details.length - 3;
+          return (
+            <Accordion key={accordion.title} title={accordion.title} className={"py-3 px-2 border rounded my-2"}>
+              <div className="overflow-hidden">
+                {isLastThree && accordion.details.includes(",") ? (
+                  <ul className="list-disc pl-5">
+                    {accordion.details.split(",").map((item, index) => (
+                      <li key={index}>{item.trim()}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{accordion.details}</p>
+                )}
+              </div>
+            </Accordion>
+          );
+        })}
       </div>
     </div>
   );
