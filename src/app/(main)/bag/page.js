@@ -23,7 +23,14 @@ const Cart = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const bag = await rest(HttpMethod.GET, createURI([paths.GET_BAG, get(BAG_KEY)]));
+      const bagId = get(BAG_KEY);
+      let path = paths.GET_BAG;
+
+      if (bagId) {
+        path = createURI([paths.GET_BAG, bagId]);
+      }
+
+      const bag = await rest(HttpMethod.GET, path);
       setBag(bag);
     }
     fetchProducts();

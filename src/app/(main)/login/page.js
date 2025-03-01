@@ -5,9 +5,11 @@ import rest from '@/app/services/rest';
 import Link from 'next/link';
 import { HttpMethod, paths } from '@/app/constant/urlResource';
 import Toast from '@/app/components/common/Toast';
-import { set } from '@/app/services/storage';
+import { get, remove, set } from '@/app/services/storage';
 import Button from '@/app/components/Button';
 import { useRouter } from 'next/navigation';
+import { BAG_KEY, LocalStorage } from '@/app/constant/staticResources';
+import { isLoggedIn } from '@/app/services/service';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -40,11 +42,19 @@ export default function Login() {
     if (validateForm()) return;
 
     setLoading(true);
-    const data = await rest(HttpMethod.POST, paths.LOGIN, { email, password: pwd });
+    const payload = { email, password: pwd };
+    const bagId = get(BAG_KEY);
+
+    if (bagId) {
+      payload["bagId"] = bagId;
+    }
+
+    const data = await rest(HttpMethod.POST, paths.LOGIN, payload);
 
     if (data && data.email) {
-      set("token", data.token);
-      set("user", data.email);
+      set(LocalStorage.TOKEN, data.token);
+      set(LocalStorage.USER_NAME, data.email);
+      remove(BAG_KEY);
       router.push("/");
     } else if (data.status === 400) {
       setError((prev) => ({...prev, server: "Internal server error"}));
@@ -56,6 +66,10 @@ export default function Login() {
 
   const getInputClass = (field) => `w-full p-3 border rounded ${error[field] ? 'border-red-500' : 'border-gray-300'}`;
   
+  if (isLoggedIn()) {
+    router.back();
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen p-4 md:p-10">
       {error.server && <Toast message={error.server} onClose={() => setError({})} />}

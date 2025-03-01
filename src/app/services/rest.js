@@ -44,6 +44,7 @@ const rest = async (method, uri, payload) => {
 const post = async (uri, payload) => {
     return await fetch(uri, {
         method: HttpMethod.POST,
+        credentials: "include",
         headers: {
             'Content-Type': 'application/json'
         },
@@ -52,12 +53,16 @@ const post = async (uri, payload) => {
 }
 
 const get = async (uri) => {
-    return await fetch(uri);
+    return await fetch(uri, {
+        method: HttpMethod.GET,
+        credentials: "include"
+    });
 }
 
 const put = async (uri, payload) => {
     return await fetch(uri, {
         method: HttpMethod.PUT,
+        credentials: "include",
         headers: {
             'Content-Type': 'application/json'
         },
