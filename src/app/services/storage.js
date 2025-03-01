@@ -8,7 +8,12 @@ const get = (key) => {
     }
 }
 
+const remove = (key) => {
+    localStorage.removeItem(key);
+}
+
 export {
     set,
-    get
+    get,
+    remove
 }

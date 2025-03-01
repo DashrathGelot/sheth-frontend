@@ -17,6 +17,11 @@ const COLOR = "Color";
 const SIZE = "Size";
 const PRODUCT_CODE = "R";
 
+const LocalStorage = {
+    TOKEN: "token",
+    USER_NAME: "username"
+}
+
 export {
     home,
     VIDEO_EXTENSTIONS,
@@ -25,5 +30,6 @@ export {
     BAG_PRODUCT_QOUNTITY,
     COLOR,
     SIZE,
-    PRODUCT_CODE
+    PRODUCT_CODE,
+    LocalStorage
 }
