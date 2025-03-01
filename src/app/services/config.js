@@ -41,15 +41,15 @@ export const config = {
   ],
   menuData: [
     {
-      label: 'Men',
-      items: ['T-Shirt', 'Shirt', 'Sweatshirt', 'Hoodies', 'Jackets', 'Bottom Wear'],
+      label: 'Unisex',
+      items: ['First Drop Collections', 'T-Shirt', 'Shirt', 'Sweatshirt', 'Hoodies', 'Jackets', 'Bottom Wear'],
     },
     {
       label: 'Women',
       items: ['T-Shirt', 'Shirt', 'Sweatshirt', 'Hoodies', 'Jackets', 'Jeans'],
     },
     {
-      label: 'Capsules',
+      label: 'Designed Collections',
       items: ['T-Shirt', 'Polo', 'Jeans'],
     }
   ],
